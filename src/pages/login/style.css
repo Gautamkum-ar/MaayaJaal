@@ -1,0 +1,114 @@
+
+
+.login__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(---background);
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.login__container form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 35rem;
+    width: 30rem;
+    padding: 4rem;
+    border: 8px solid var(---background);
+    background: var(---background);
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+    5px 5px 15px rgba(0,0,0,0.35),
+    inset -5px -5px 15px rgba(255,255,255,0.1),
+    inset 5px 5px 15px rgba(0,0,0,0.35);
+    gap: 2rem;
+
+}
+
+.login__container form h2{
+    justify-content:center;
+    color: var(---font-color);
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+  margin-top: -4rem;
+}
+.input__container{
+    position: relative;
+    width: 100%;
+}
+.input__container input{
+    padding: 0.7rem 0.5rem 0.7rem 2.8rem;
+    border: none;
+    width: 100%;
+    background: var(---background);
+    border: 1px solid rgba(0,0,0,0.1);
+    color: var(---font-color);
+    font-weight: 300;
+    border-radius: 1rem;
+    font-size: 1rem;
+    box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+    5px 5px 15px rgba(0,0,0,0.35);
+    transition: 0.5s;
+    outline: none;
+
+
+}
+.input__container input:valid~span,
+.input__container input:focus~span{
+    color: #00dfc4;
+    border: 1px solid #00dfc4;
+    background: var(---background);
+    transform: translateX(2.5rem) translateY(-0.4rem);
+    font-size: 0.6rem;
+    padding: 0 8px;
+    border-radius: 1rem;
+    letter-spacing: 0.1rem;
+}
+.input__container input:valid,
+.input__container input:focus{
+border: 1px solid #00dfc4;
+}
+.input__container span{
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 0.7rem 0.5rem 0.7rem 2.8rem;
+    pointer-events: none;
+    font-size: 1rem;
+    font-weight: 300;
+    transition: 0.5s;
+    letter-spacing: 0.05rem;
+    color: rgba(255,255,255,0.5);
+
+}
+
+.input__container p{
+    position: absolute;
+    top: 0.7rem;
+    left: 0.8rem;
+    width: 1.7rem;
+    font-size: 1rem;
+    padding: 2px 0;
+    color: #00dfc4;
+    border-right: 1px solid #00dfc4;
+
+}
+.login__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(---btn-color);
+    width: 70%;
+    padding: 0.7rem;
+    border-radius: 1rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(---background);
+
+
+}

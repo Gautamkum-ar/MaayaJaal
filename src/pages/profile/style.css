@@ -1,0 +1,106 @@
+
+
+
+.profile__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        background: var(---background);
+       width: 100%;
+       height: 100vh;
+       margin-top: 4rem;
+}
+.profile{
+    display: flex;
+    justify-content: center;
+    width: 57%;
+    height: 100%;
+    border-left: 1px solid #949090;
+    border-right: 1px solid #949090;
+     margin-left: 18%;
+     
+    }
+    .profile__details{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        /* align-items: center; */
+        width: 80%;
+        height: 25rem;
+        margin-top: 1rem;   
+        border: 1px solid #949090;
+    /* background: #949090; */
+}
+.hero{
+    display: flex;
+    flex-direction: column;
+  
+    width: 100%;
+    position: relative;
+}
+.hero .cover{
+    height: 13rem;
+    width: 100%;
+    margin: 0;
+
+}
+.hero .avatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 5rem;
+    width: 5em;
+    position: absolute;
+    bottom: 3rem;
+    left: 0.5rem;
+    border-radius: 50%;
+}
+
+
+.hero__details{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 1rem;
+    margin-left: 1rem;
+}
+
+.hero__details h3{
+    display: flex;
+    text-transform: capitalize;
+    align-items: center;
+    color: #795858;
+    font-size: 1.3rem;
+}
+.hero__details p{
+    display: flex;
+    margin-top: 0.4rem;
+    color: #949090;
+    
+}
+.hero__details button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 2rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+    background: transparent;
+    border: 1px solid var(---btn-color);
+    color: #949090;
+    outline: none;
+    border-radius: 5px;
+    
+}
+.hero__follow{
+    display: flex;
+    height: 5rem;
+    width: 100%;
+    color: #949090;
+    font-size: 1rem;
+    margin-top: 3rem;
+    justify-content:space-around;
+}

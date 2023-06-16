@@ -1,0 +1,52 @@
+
+
+.landing__container{
+    display:flex;
+ 
+    background: var(---background);
+    height: 100vh;
+    width: 100%;
+}
+.left__sec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    color: #00dfc4;
+
+}
+.left__sec h1 span{
+    color: red;
+}
+.right__sec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 50%;
+    position: relative;
+
+}
+.signUp__link,.login__link{
+    display: flex;
+position: absolute;  
+bottom: 6rem; 
+color:#6d7877; 
+
+}
+
+.signUp__link button,.login__link button{
+    display: flex;
+    border: none;
+  justify-content: center;
+  align-items: center;
+    background: none;
+    margin-left: 0.6rem;
+    color: #00dfc4;
+cursor: pointer;
+}
+.signUp__link button:hover,.login__link button:hover{
+font-size: 1rem;
+}
