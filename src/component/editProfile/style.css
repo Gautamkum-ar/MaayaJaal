@@ -4,23 +4,24 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
     align-items: center;
-    width: 100%;
-    height: 100%;
-    background: #7777772b;
+    /* background: #001bea2b; */
     position: fixed;
-    margin: 0;
+    margin-top: 4rem;
     top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 10;
 }
 
 .edit__profile__main{
     display: flex;
- flex-direction: column;
- align-items: center;
+    flex-direction: column;
+    align-items: center;
     width: 40rem;
-    height: 30rem;
-    background:#ffffff7e;
+    height: 35rem;
+    background:#bcb9b934;
     margin-top: 2rem;
     position: relative;
 }
@@ -58,8 +59,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin: 2rem;
-    /* height: 5rem; */
+    margin: 2rem 0;
 }
 .change__user__avatar img{
     display: flex;

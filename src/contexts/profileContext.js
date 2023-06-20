@@ -10,11 +10,13 @@ import { proReducer } from "../reducers/profilereducer/proReducer";
 import { useNavigate } from "react-router-dom";
 
 import baseUrl from "../utils/baseUrl";
+import { toast } from "react-toastify";
 
 const ProfileContext = createContext();
 
 const initialState = {
   profileData: {},
+  allusers: [],
 };
 
 export const ProfileContextProvider = ({ children }) => {
@@ -25,6 +27,7 @@ export const ProfileContextProvider = ({ children }) => {
   const [editProfile, setEditProfile] = useState({
     name: "",
     bio: "",
+    userName: "",
   });
 
   const handleAvatar = (e) => {
@@ -50,13 +53,14 @@ export const ProfileContextProvider = ({ children }) => {
           authorization: token,
         },
       });
-      //   console.log(response.data.data);
 
       localStorage.removeItem("avatar");
       localStorage.setItem("avatar", response.data.data.avatar);
       dispatch({ type: "GET_PROFILE", payload: response.data.data });
     } catch (error) {}
   };
+
+  console.log(imag);
 
   const editProfileHandler = async () => {
     const encodedToken = `Bearer ${localStorage.getItem("token")}`;
@@ -65,10 +69,11 @@ export const ProfileContextProvider = ({ children }) => {
       const name = editProfile.name;
       const bio = editProfile.bio;
       const image = imag;
+      const userName = editProfile.userName;
 
       const response = await axios.post(
         `${baseUrl}/editProfile`,
-        { name: name, bio: bio, image: image },
+        { name: name, bio: bio, image: image, userName: userName },
         {
           headers: { authorization: encodedToken },
         }
@@ -80,8 +85,19 @@ export const ProfileContextProvider = ({ children }) => {
     }
   };
 
+  const getAllUsers = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/getallusers`);
+
+      if (response.status === 200) {
+        dispatch({ type: "GET_ALL_USERS", payload: response.data.data });
+      }
+    } catch (error) {}
+  };
+
   useEffect(() => {
     getProfileData();
+    getAllUsers();
   }, []);
 
   return (

@@ -51,6 +51,7 @@
 .suggestions .suggest__user{
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 0.7rem;
     width: 95%;
     margin: auto;
@@ -69,7 +70,6 @@
 }
 .suggest__user .user__name{
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 2rem;
     color: var(---font-color);

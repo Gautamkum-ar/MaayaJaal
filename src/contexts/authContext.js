@@ -9,6 +9,9 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [saveLoginData, setSaveLoginData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [toggleLogin, setToggleLogin] = useState(false);
+
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -19,11 +22,13 @@ export const AuthContextProvider = ({ children }) => {
     email: "",
     createPass: "",
     password: "",
+    userName: "",
   });
 
   const navigate = useNavigate();
 
   const loginHandler = async () => {
+    setIsLoading(true);
     try {
       const cred = {
         email: loginData.email,
@@ -32,7 +37,7 @@ export const AuthContextProvider = ({ children }) => {
 
       if (loginData.email !== "" || loginData.password !== "") {
         const response = await axios.post(`${baseUrl}/login`, cred);
-
+        setIsLoading(false);
         setSaveLoginData(response.data.data);
 
         localStorage.setItem("avatar", response.data.data.user.avatar);
@@ -43,10 +48,14 @@ export const AuthContextProvider = ({ children }) => {
         navigate("/home");
       }
     } catch (error) {
-      console.log(error);
+      setIsLoading(false);
+      error.status === 404
+        ? toast.error(error.response.data.message)
+        : toast.warning(error.response.data.message);
     }
   };
   const guestLoginHandler = async () => {
+    setIsLoading(true);
     try {
       const cred = {
         email: "gautam@gmail.com",
@@ -54,33 +63,39 @@ export const AuthContextProvider = ({ children }) => {
       };
 
       const response = await axios.post(`${baseUrl}/login`, cred);
-
+      setIsLoading(false);
       setSaveLoginData(response.data.data);
       localStorage.setItem("avatar", response.data.data.user.avatar);
       localStorage.setItem("token", response.data.data.encodedToken);
       toast.success(response.data.message);
       navigate("/home");
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
     }
   };
 
   const signupHandler = async () => {
+    setIsLoading(true);
     try {
       if (
         signupData.email !== "" ||
         signupData.name !== "" ||
-        signupData.password !== ""
+        signupData.password !== "" ||
+        signupData.userName !== ""
       ) {
         const response = await axios.post(`${baseUrl}/signup`, {
           name: signupData.name,
           email: signupData.email,
           password: signupData.password,
+          userName: signupData.userName,
         });
-        console.log(response.data);
+        setIsLoading(false);
+        console.log(response);
         toast.success(response.data.message);
+        setToggleLogin(false);
       }
     } catch (error) {
+      setIsLoading(false);
       if (error.response.status === 409) {
         toast.error("Email already eixts");
       }
@@ -98,6 +113,9 @@ export const AuthContextProvider = ({ children }) => {
         signupData,
         guestLoginHandler,
         saveLoginData,
+        isLoading,
+        toggleLogin,
+        setToggleLogin,
       }}
     >
       {children}

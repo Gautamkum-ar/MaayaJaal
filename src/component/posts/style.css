@@ -1,0 +1,40 @@
+
+
+.edit__post__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+.edit__post__main{
+    background: var(---background);
+    width: 40%;
+position: relative;
+    height: 50%;
+}
+.__heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #888;
+    margin: 1rem;
+}
+.close__edit__post{
+    position: absolute;
+top: 0.5rem;
+right: 0.5rem;
+height: 2rem;
+width: 2rem;
+background: none;
+border: none;
+font-size: 1.3rem;
+color: red;
+cursor: pointer;
+}

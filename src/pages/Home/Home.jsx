@@ -1,5 +1,5 @@
+import { NavBar } from "../../component/nvabar/NavBar";
 import "../Home/style.css";
-import { NavBar } from "../component/nvabar/NavBar";
 import { Feeds } from "./feed/FeedSec";
 import { Navigation } from "./navigation/Navigaton";
 import { Suggestion } from "./suggestion/Suggestion";

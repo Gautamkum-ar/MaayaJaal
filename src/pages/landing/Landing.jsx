@@ -2,9 +2,10 @@ import { useState } from "react";
 import "../landing/style.css";
 import { Login } from "../login/Login";
 import { SingUp } from "../signup/SignUp";
+import { useAuth } from "../../contexts/authContext";
 
 export const Landing = () => {
-  const [signUp, setSignUp] = useState(false);
+  const { toggleLogin, setToggleLogin } = useAuth();
   return (
     <div className="landing__container">
       <section className="left__sec">
@@ -13,12 +14,12 @@ export const Landing = () => {
         </h1>
       </section>
       <section className="right__sec">
-        {signUp ? (
+        {toggleLogin ? (
           <>
             <SingUp />
             <p className="signUp__link">
               Not register yet{" "}
-              <button onClick={() => setSignUp(false)}>Login</button>
+              <button onClick={() => setToggleLogin(false)}>Login</button>
             </p>
           </>
         ) : (
@@ -26,7 +27,7 @@ export const Landing = () => {
             <Login />
             <p className="login__link">
               Aready have Account{" "}
-              <button onClick={() => setSignUp(true)}>SignUp</button>
+              <button onClick={() => setToggleLogin(true)}>SignUp</button>
             </p>
           </>
         )}

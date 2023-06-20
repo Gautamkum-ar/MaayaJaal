@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
-import { useProfile } from "../../../contexts/profileContext";
-import "../editProfile/style.css";
+import { useProfile } from "../../contexts/profileContext";
+import "./style.css";
 
 export const EditProfile = ({ setEditBtn }) => {
   const {
@@ -48,6 +48,17 @@ export const EditProfile = ({ setEditBtn }) => {
             value={editProfile.name}
             onChange={(e) =>
               setEditProfile({ ...editProfile, name: e.target.value })
+            }
+          />
+        </div>
+        <div className="change__name">
+          <p>Change your username</p>
+          <input
+            type="text"
+            className="username"
+            value={editProfile.userName}
+            onChange={(e) =>
+              setEditProfile({ ...editProfile, userName: e.target.value })
             }
           />
         </div>

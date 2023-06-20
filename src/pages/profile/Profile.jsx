@@ -2,15 +2,22 @@ import { useState } from "react";
 import { useProfile } from "../../contexts/profileContext";
 import { Navigation } from "../Home/navigation/Navigaton";
 import { Suggestion } from "../Home/suggestion/Suggestion";
-import { NavBar } from "../component/nvabar/NavBar";
+import { NavBar } from "../../component/nvabar/NavBar";
 import "../profile/style.css";
-import { EditProfile } from "../component/editProfile/EditProfile";
+import "../Home/feed/feedStyle.css";
+import { EditProfile } from "../../component/editProfile/EditProfile";
+import { usePost } from "../../contexts/postContext";
+import { Posts } from "../../component/posts/Posts";
 
 export const Profile = () => {
   const [editBtn, setEditBtn] = useState(false);
   const { state } = useProfile();
+  const { posts } = usePost();
 
-  const { avatar, name, bio, email, cover } = state?.profileData;
+  const { avatar, name, bio, email, cover, userName, _id } = state?.profileData;
+
+  const filterUserPost = posts.filter((post) => post.userId._id === _id);
+
   return (
     <div className="profile__container">
       <NavBar />
@@ -29,10 +36,10 @@ export const Profile = () => {
                 <div className="hero__details">
                   <div>
                     <h3>{name}</h3>
-                    <p>@{email}</p>
+                    <p>@{userName}</p>
                     <p>{bio}</p>
                   </div>
-                  <div>
+                  <div className="profile__action__btns">
                     <button
                       onClick={() => {
                         setEditBtn(true);
@@ -40,6 +47,7 @@ export const Profile = () => {
                     >
                       Edit Profile
                     </button>
+                    <button>Delete Profile</button>
                   </div>
                 </div>
               </section>
@@ -48,6 +56,9 @@ export const Profile = () => {
                 <p>Followers(0)</p>
                 <p>Following(0)</p>
               </section>
+            </div>
+            <div className="user__post">
+              <Posts posts={filterUserPost} />
             </div>
           </div>
         )}

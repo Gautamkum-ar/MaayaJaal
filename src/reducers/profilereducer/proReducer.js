@@ -6,6 +6,13 @@ export const proReducer = (state, { type, payload }) => {
         profileData: payload,
       };
     }
+
+    case "GET_ALL_USERS": {
+      return {
+        ...state,
+        allusers: payload,
+      };
+    }
     case "UPDATE_PROFILE": {
       return {
         ...state,

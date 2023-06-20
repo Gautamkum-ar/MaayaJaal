@@ -26,6 +26,19 @@ export const SingUp = () => {
         </div>
         <div className="imput__container">
           <input
+            type="text"
+            required
+            onChange={(e) =>
+              setSignupData({ ...signupData, userName: e.target.value })
+            }
+          />
+          <p>
+            <FaUser />
+          </p>
+          <span>user name</span>
+        </div>
+        <div className="imput__container">
+          <input
             type="email"
             required
             onChange={(e) =>

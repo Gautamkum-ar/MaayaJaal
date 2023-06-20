@@ -1,6 +1,6 @@
-import "../nvabar/style.css";
+import "./style.css";
 
-import { useProfile } from "../../../contexts/profileContext";
+import { useProfile } from "../../contexts/profileContext";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 

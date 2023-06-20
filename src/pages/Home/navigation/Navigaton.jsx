@@ -6,12 +6,12 @@ export const Navigation = () => {
   return (
     <div className="naviation__container">
       <div className="navigation__main">
-        <Link className="navigations">
+        <Link className="navigations" to="/home">
           {" "}
           <FaHome />
           Home
         </Link>
-        <Link className="navigations">
+        <Link className="navigations" to="/home">
           {" "}
           <FaWpexplorer />
           Explore
@@ -25,7 +25,7 @@ export const Navigation = () => {
           Liked Posts
         </Link>
 
-        <button className="create__post">Create Post</button>
+        {/* <button className="create__post">Create Post</button> */}
       </div>
     </div>
   );
