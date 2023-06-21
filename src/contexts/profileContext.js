@@ -23,6 +23,7 @@ export const ProfileContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(proReducer, initialState);
 
   const [imag, setImage] = useState();
+  const [isProfileLoading, setIsProfileLoading] = useState(false);
 
   const [editProfile, setEditProfile] = useState({
     name: "",
@@ -45,6 +46,7 @@ export const ProfileContextProvider = ({ children }) => {
   const navigate = useNavigate();
 
   const getProfileData = async () => {
+    setIsProfileLoading(true);
     const token = "Bearer" + " " + localStorage.getItem("token");
 
     try {
@@ -57,12 +59,16 @@ export const ProfileContextProvider = ({ children }) => {
       localStorage.removeItem("avatar");
       localStorage.setItem("avatar", response.data.data.avatar);
       dispatch({ type: "GET_PROFILE", payload: response.data.data });
-    } catch (error) {}
+
+      setIsProfileLoading(false);
+    } catch (error) {
+      setIsProfileLoading(false);
+      toast.error("Something went wrong");
+    }
   };
 
-  console.log(imag);
-
   const editProfileHandler = async () => {
+    setIsProfileLoading(true);
     const encodedToken = `Bearer ${localStorage.getItem("token")}`;
 
     try {
@@ -79,20 +85,34 @@ export const ProfileContextProvider = ({ children }) => {
         }
       );
 
-      dispatch({ type: "UPDATE_PROFILE", payload: response.data.data });
+      if (response.status === 200) {
+        localStorage.removeItem("avatar");
+        localStorage.setItem("avatar", response.data.data.avatar);
+        dispatch({ type: "UPDATE_PROFILE", payload: response.data.data });
+      }
+
+      setIsProfileLoading(false);
     } catch (e) {
-      console.error(e);
+      setIsProfileLoading(false);
+      toast.error(e.message);
     }
   };
 
   const getAllUsers = async () => {
+    setIsProfileLoading(true);
+
     try {
       const response = await axios.get(`${baseUrl}/getallusers`);
 
       if (response.status === 200) {
         dispatch({ type: "GET_ALL_USERS", payload: response.data.data });
       }
-    } catch (error) {}
+      setIsProfileLoading(false);
+    } catch (error) {
+      setIsProfileLoading(false);
+
+      toast.error(error.message);
+    }
   };
 
   useEffect(() => {
@@ -109,6 +129,7 @@ export const ProfileContextProvider = ({ children }) => {
         editProfile,
         setEditProfile,
         handleAvatar,
+        isProfileLoading,
       }}
     >
       {children}

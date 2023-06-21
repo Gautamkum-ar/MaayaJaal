@@ -114,6 +114,27 @@ export const PostContextProvider = ({ children }) => {
     }
   };
 
+  const likePostHandler = async (id) => {
+    console.log(id);
+    const encodedToken = `Bearer ${localStorage.getItem("token")}`;
+    try {
+      const response = await axios.put(
+        `${baseUrl}/likes/${id}`,
+        {},
+        {
+          headers: { authorization: encodedToken },
+        }
+      );
+
+      if (response.status === 200) {
+        toast.success(response.data.message);
+        dispatch({ type: "LIKE_POST", payload: response.data.data });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const posts = state.postData;
   useEffect(() => {
     getAllPosthandler();
@@ -135,6 +156,7 @@ export const PostContextProvider = ({ children }) => {
         dispatch,
         isPostLoading,
         posts,
+        likePostHandler,
       }}
     >
       {children}

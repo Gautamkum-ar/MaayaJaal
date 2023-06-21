@@ -26,5 +26,11 @@ export const postReducer = (state, { type, payload }) => {
         postData: payload,
       };
     }
+    case "LIKE_POST": {
+      return {
+        ...state,
+        postData: payload,
+      };
+    }
   }
 };

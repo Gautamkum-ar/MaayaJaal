@@ -205,6 +205,11 @@ justify-content: center;
     width: 100%;
 }
 
+.action__btns p span{
+    color: rgb(175, 194, 194);
+    margin-right: 0.5rem;
+}
+
 .like,.comment,.share{
     display: flex;
     color: #949090;

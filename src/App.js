@@ -12,15 +12,17 @@ import { Profile } from "./pages/profile/Profile";
 import { useAuth } from "./contexts/authContext";
 import { Loader } from "./component/loader/Loader";
 import { usePost } from "./contexts/postContext";
+import { useProfile } from "./contexts/profileContext";
 // import { RequireAuth } from "./RequireAuth/requireAuth";
 
 function App() {
   const { isLoading } = useAuth();
   const { isPostLoading } = usePost();
+  const { isProfileLoading } = useProfile();
   return (
     <div className="App">
       <ToastContainer />
-      {isLoading || (isPostLoading && <Loader />)}
+      {isLoading || isPostLoading || (isProfileLoading && <Loader />)}
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />

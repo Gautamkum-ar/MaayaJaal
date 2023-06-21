@@ -3,11 +3,17 @@ import { FaCommentDots, FaShare, FaThumbsUp } from "react-icons/fa";
 import { useProfile } from "../../contexts/profileContext";
 import { usePost } from "../../contexts/postContext";
 import { EditPost } from "./EditPost";
+import { useState } from "react";
 
 export const Posts = ({ posts }) => {
   const { state } = useProfile();
-  const { setToggleEditPost, toggleEditPost, deletePostHandler, dispatch } =
-    usePost();
+  const {
+    setToggleEditPost,
+    toggleEditPost,
+    deletePostHandler,
+    dispatch,
+    likePostHandler,
+  } = usePost();
 
   return (
     <div className="show__all__post">
@@ -19,6 +25,8 @@ export const Posts = ({ posts }) => {
           caption,
           createdAt,
           photoUrl,
+          likes,
+          isLiked,
         } = post;
 
         return (
@@ -56,8 +64,9 @@ export const Posts = ({ posts }) => {
             </section>
 
             <section className="action__btns">
-              <p className="like">
-                <FaThumbsUp />
+              <p className="like" style={{ color: isLiked ? "blue" : "" }}>
+                <span>({likes})</span>{" "}
+                <FaThumbsUp onClick={() => likePostHandler(post._id)} />
               </p>
               <p className="comment">
                 <FaCommentDots />
