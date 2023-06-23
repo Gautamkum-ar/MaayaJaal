@@ -1,0 +1,112 @@
+/* comments */
+
+
+.comments{
+    display: flex;
+    flex-direction: column;
+/* justify-content: center; */
+/* align-items: center; */
+    width: 100%;
+    min-height: 4rem;
+    margin-top: 1rem;
+    
+    
+    
+}
+.comments h3{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #888;
+    border-top: 1px solid #88888858;
+    padding: 0.5rem;
+}
+.comment__icon{
+    display: flex;
+    /* justify-content: center; */
+    transform: rotateY(180deg);
+    align-items: center;
+    margin-top: 1rem;
+    color: #888;
+    width: 2rem;
+}
+.new__comment{
+    display: flex;
+    margin: 1rem;
+}
+.comments .comment__input{
+    display: flex;
+    width: 80%;
+    height:2rem;
+    padding: 0.5rem;
+    background: none;
+    color: #888;
+    word-wrap: break-word;
+    word-break: break-all;
+    border:none;
+    outline: none;
+    overflow: hidden;
+    font-size: 1rem;
+    border-bottom: 1px solid #88888858;
+    
+}
+
+.comments button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 2rem;
+    border: 1px solid var(---btn-color);
+    background: none;
+    color: aliceblue;
+    border-radius: 5px ;
+    cursor: pointer;
+
+}
+
+.comment__card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    background: #88888809;
+    margin:0.2rem auto;
+    padding: 0.3rem 0.5rem;
+    border-radius: 7px;
+
+}
+
+.comment__text{
+    display: flex;
+    align-items: center;
+    width: 70%;
+    color: #888;
+    font-size: 0.9rem;
+}
+.comment__user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 100%;
+
+}
+
+.comment__user img{
+width: 2rem;
+height: 2rem;
+border-radius: 50%;
+}
+
+.comment__card .delete__post__btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 2rem;
+    background: none;
+    border:none;
+    color: red;
+    font-size: 0.8rem;
+}

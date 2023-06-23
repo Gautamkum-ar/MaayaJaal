@@ -4,8 +4,9 @@ import { useProfile } from "../../contexts/profileContext";
 import { usePost } from "../../contexts/postContext";
 import { EditPost } from "./EditPost";
 import { useState } from "react";
+import { Comments } from "../comments/Comment";
 
-export const Posts = ({ posts }) => {
+export const Posts = ({ posts, likePostData }) => {
   const { state } = useProfile();
   const {
     setToggleEditPost,
@@ -15,6 +16,7 @@ export const Posts = ({ posts }) => {
     likePostHandler,
   } = usePost();
 
+const profileData =state?.profileData
   return (
     <div className="show__all__post">
       {toggleEditPost && <EditPost />}
@@ -64,13 +66,18 @@ export const Posts = ({ posts }) => {
             </section>
 
             <section className="action__btns">
-              <p className="like" style={{ color: isLiked ? "blue" : "" }}>
+              <p
+                className="like"
+                style={{
+                  color: isLiked ? "blue" : "",
+                }}
+              >
                 <span>({likes})</span>{" "}
                 <FaThumbsUp onClick={() => likePostHandler(post._id)} />
               </p>
-              <p className="comment">
+              {/* <p className="comment">
                 <FaCommentDots />
-              </p>
+              </p> */}
               <p className="share">
                 <FaShare />
               </p>
@@ -78,6 +85,7 @@ export const Posts = ({ posts }) => {
                 Publish at: {createdAt.slice(0, 10)}
               </p>
             </section>
+            <Comments post={post}  profileData={profileData}/>
           </div>
         );
       })}

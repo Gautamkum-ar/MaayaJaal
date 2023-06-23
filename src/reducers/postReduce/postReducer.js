@@ -29,8 +29,25 @@ export const postReducer = (state, { type, payload }) => {
     case "LIKE_POST": {
       return {
         ...state,
-        postData: payload,
+        postData: payload.data,
+        likePostData: payload.allLikes,
       };
+    }
+    case "GET_COMMENT":{
+      return{
+        ...state,commentData:payload
+      }
+    }
+
+    case 'POST_COMMENT':{
+      return{
+        ...state,commentData:payload
+      }
+    }
+    case 'DELETE_COMMENT':{
+      return{
+        ...state,commentData:payload
+      }
     }
   }
 };

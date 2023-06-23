@@ -7,10 +7,11 @@ import "../feed/feedStyle.css";
 export const Feeds = () => {
   const { state } = usePost();
   const posts = state?.postData;
+  const likePostData = state?.likePostData;
   return (
     <div className="feed__container">
       <CreatePost />
-      <Posts posts={posts} />
+      <Posts posts={posts} likePostData={likePostData} />
     </div>
   );
 };

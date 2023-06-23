@@ -52,7 +52,7 @@ export const Profile = () => {
                 </div>
               </section>
               <section className="hero__follow">
-                <p>Posts(0)</p>
+                <p>Posts({filterUserPost.length})</p>
                 <p>Followers(0)</p>
                 <p>Following(0)</p>
               </section>

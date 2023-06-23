@@ -15,6 +15,8 @@ const PostContext = createContext();
 const initialState = {
   postData: [],
   editpost: {},
+  likePostData: [],
+  commentData: [],
 };
 
 export const PostContextProvider = ({ children }) => {
@@ -128,7 +130,52 @@ export const PostContextProvider = ({ children }) => {
 
       if (response.status === 200) {
         toast.success(response.data.message);
-        dispatch({ type: "LIKE_POST", payload: response.data.data });
+        dispatch({ type: "LIKE_POST", payload: response.data });
+        console.log(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  ///comments api
+
+  const getCommentHandler = async () => {
+    try {
+      const response = await axios.get(`${baseUrl}/getcomment`);
+      if(response.status===200){
+        dispatch({type:"GET_COMMENT",payload:response.data.data})
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const commentHandler = async (id, commentInput) => {
+    try {
+      const response = await axios.post(
+        `${baseUrl}/comment/${id}`,
+        {
+          comment: commentInput,
+        },
+        {
+          headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      dispatch({ type: "POST_COMMENT", payload: response.data.data });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteCommentHandler = async (id) => {
+    try {
+      const response = await axios.delete(`${baseUrl}/deletecomment/${id}`, {
+        headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      if (response.status === 200) {
+        dispatch({ type: "DELETE_COMMENT", payload: response.data.data });
+      } else {
+        toast.warning(response.data.message);
       }
     } catch (error) {
       console.log(error);
@@ -138,6 +185,7 @@ export const PostContextProvider = ({ children }) => {
   const posts = state.postData;
   useEffect(() => {
     getAllPosthandler();
+    getCommentHandler();
   }, []);
 
   return (
@@ -157,6 +205,8 @@ export const PostContextProvider = ({ children }) => {
         isPostLoading,
         posts,
         likePostHandler,
+        commentHandler,
+        deleteCommentHandler,
       }}
     >
       {children}
