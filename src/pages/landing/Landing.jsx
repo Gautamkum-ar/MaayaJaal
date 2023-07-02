@@ -12,6 +12,10 @@ export const Landing = () => {
         <h1>
           Maaya <span>Jaal</span>
         </h1>
+
+        <marquee behavior="" direction="left">
+          WELCOME TO <span>MAAYAJAAL</span> PLEASE! LOGIN TO CONTINUE
+        </marquee>
       </section>
       <section className="right__sec">
         {toggleLogin ? (

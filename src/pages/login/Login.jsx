@@ -24,7 +24,7 @@ export const Login = () => {
           <p>
             <FaEnvelope />
           </p>
-          <span>email address</span>
+          <span>Email address</span>
         </div>
         <div className="input__container">
           <input
@@ -37,7 +37,7 @@ export const Login = () => {
           <p>
             <FaLock />
           </p>
-          <span>create password</span>
+          <span>Enter password</span>
         </div>
         <button
           className="login__btn"

@@ -1,5 +1,7 @@
 import { FaFire } from "react-icons/fa";
-import { usePost } from "../../../contexts/postContext";
+
+import "../filter/style.css";
+import { usePost } from "../../contexts/postContext";
 
 export const FilterBox = () => {
   const { dispatch } = usePost();

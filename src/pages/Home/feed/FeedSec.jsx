@@ -1,3 +1,4 @@
+import { FilterBox } from "../../../component/filter/Filter";
 import { Posts } from "../../../component/posts/Posts";
 import { CreatePost } from "../../../component/posts/createPost/CreatePost";
 import { usePost } from "../../../contexts/postContext";
@@ -11,6 +12,9 @@ export const Feeds = () => {
   console.log(state.postData);
   return (
     <div className="feed__container">
+      <div className="filters__mobile">
+        <FilterBox />
+      </div>
       <CreatePost />
       <Posts posts={posts} likePostData={likePostData} />
     </div>

@@ -1,8 +1,8 @@
 import "../suggestion/suggStyle.css";
 import { useProfile } from "../../../contexts/profileContext";
 import { useNavigate } from "react-router-dom";
-import { FilterBox } from "../../../component/comments/filter/Filter";
 import { useAuth } from "../../../contexts/authContext";
+import { FilterBox } from "../../../component/filter/Filter";
 
 export const Suggestion = () => {
   const { state, dispatch } = useProfile();
@@ -15,7 +15,9 @@ export const Suggestion = () => {
   const navigate = useNavigate();
   return (
     <div className="suggestion__container">
-      <FilterBox />
+      <div className="filters">
+        <FilterBox />
+      </div>
       <div className="suggestions">
         <h2>Suggestion for you</h2>
         {filterSuggestUser.map((user) => {

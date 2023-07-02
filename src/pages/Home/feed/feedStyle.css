@@ -215,6 +215,11 @@ justify-content: center;
     color: #949090;
     cursor: pointer;
 }
+.filters__mobile{
+    display: none;
+    width: 100%;
+    margin-bottom: 0;
+}
 
 
 @media (max-width:480px){
@@ -232,5 +237,8 @@ justify-content: center;
     }
     .post__main{
         width: 90%;
+    }
+    .filters__mobile{
+        display: flex;
     }
   }
