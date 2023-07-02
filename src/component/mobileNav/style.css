@@ -1,0 +1,43 @@
+
+
+
+.mobile__nav{
+    display: none;
+    
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.mobile__create_post{
+    display: flex;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: var(---font-color);
+
+}
+
+@media only screen and (max-width:600px){
+    
+    .mobile__nav{
+        display: flex;
+        width: 100%;
+         height: 4rem;
+        justify-content: space-around;
+        align-items: center;
+        background: var(---background);
+        margin-bottom: -2px;
+        z-index: 100;
+    }
+    .mobile__nav a{
+        display: flex;
+        text-decoration: none;
+        color: var(---font-color);
+        font-size: 1.5rem;
+
+    }
+   
+  
+    
+  }

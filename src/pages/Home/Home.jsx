@@ -1,4 +1,5 @@
 import { Loader } from "../../component/loader/Loader";
+import { MobileNav } from "../../component/mobileNav/MobileNav";
 import { NavBar } from "../../component/nvabar/NavBar";
 import { useAuth } from "../../contexts/authContext";
 import "../Home/style.css";
@@ -8,7 +9,7 @@ import { Suggestion } from "./suggestion/Suggestion";
 
 export const Home = () => {
   const { isLoading } = useAuth();
-  
+
   return (
     <>
       <div className="home__container">
@@ -22,6 +23,8 @@ export const Home = () => {
             <Suggestion />
           </div>
         )}
+
+        <MobileNav />
       </div>
     </>
   );

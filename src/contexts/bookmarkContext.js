@@ -1,11 +1,12 @@
 import axios from "axios";
-import { createContext, useContext, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import baseUrl from "../utils/baseUrl";
 import { toast } from "react-toastify";
 
 const BookMarkContext = createContext();
 
 export const BookMarkProvider = ({ children }) => {
+  const [bookmarkData, setBookmarkData] = useState([]);
   const addToBookMark = async (id) => {
     try {
       const response = await axios.post(
@@ -17,15 +18,15 @@ export const BookMarkProvider = ({ children }) => {
           },
         }
       );
-      if (response.data.status === 200) {
+      if (response.status === 200) {
+        setBookmarkData(response.data.data);
         toast.success(response.data.message);
-      }
-
-      if (response.data.status === 409) {
-        toast.warning(response.data.message);
+        console.log(response.data.data, response.data.message);
       }
     } catch (error) {
-      console.log(error);
+      // if (error.response.status === 409) {
+      //   toast.warning(error.response.data.message);
+      // }
     }
   };
 
@@ -36,8 +37,7 @@ export const BookMarkProvider = ({ children }) => {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       });
-      console.log("hii");
-
+      setBookmarkData(response.data.data);
       console.log(response.data.data);
     } catch (error) {
       console.log(error);
@@ -46,10 +46,11 @@ export const BookMarkProvider = ({ children }) => {
 
   useEffect(() => {
     getBookMark();
-    console.log("hello");
   }, []);
   return (
-    <BookMarkContext.Provider value={{ addToBookMark, getBookMark }}>
+    <BookMarkContext.Provider
+      value={{ addToBookMark, getBookMark, bookmarkData }}
+    >
       {children}
     </BookMarkContext.Provider>
   );

@@ -18,7 +18,7 @@ export const Navigation = () => {
           <FaWpexplorer />
           Explore
         </Link>
-        <Link className="navigations">
+        <Link className="navigations" to="/bookmark">
           <FaBookmark onClick={() => getBookMark()} /> BookMarks
         </Link>
         <Link className="navigations">
@@ -26,8 +26,6 @@ export const Navigation = () => {
           <FaHeart />
           Liked Posts
         </Link>
-
-        {/* <button className="create__post">Create Post</button> */}
       </div>
     </div>
   );

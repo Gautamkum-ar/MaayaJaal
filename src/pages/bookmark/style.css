@@ -1,0 +1,34 @@
+
+
+.bookmark__container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background: var(---background);
+}
+
+.bookmark__main{
+    display: flex;
+    margin-top: 4rem;
+}
+
+.middle{
+    width: 57%;
+    margin-left: 18%;
+    border: 1px solid #999;
+    padding-top: 2rem;
+}
+
+
+@media only screen and (max-width:600px){
+
+   .middle{
+    width: 100%;
+    margin: auto;
+    border: none;
+   }
+  
+    
+  }
+
