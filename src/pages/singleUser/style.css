@@ -1,14 +1,16 @@
 
-
-
-.profile__container{
+.single__profile{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
         background: var(---background);
-       width: 100%;
+       /* width: 100%; */
        margin-top: 4rem;
+}
+.single__profile__main{
+    width: 100%;
+    display: flex;
 }
 .profile{
     display: flex;
@@ -19,16 +21,19 @@
     min-height: 100vh;
     border-left: 1px solid #949090;
     border-right: 1px solid #949090;
-     margin-left: 18%;
+     /* margin-left: 10%; */
      
     }
     .profile__details{
         display: flex;
         flex-direction: column;
+        /* justify-content: center; */
+        /* align-items: center; */
         width: 80%;
         height: 25rem;
         margin-top: 1rem;   
         border: 1px solid #949090;
+    /* background: #949090; */
 }
 .hero{
     display: flex;
@@ -51,8 +56,8 @@
     height: 5rem;
     width: 5em;
     position: absolute;
+    bottom: 3rem;
     left: 0.5rem;
-    top: 10rem;
     border-radius: 50%;
 }
 
@@ -122,39 +127,3 @@
     height: 100%;
     margin-top: 2rem;
 }
-
-
-@media (max-width:480px){
-
-   
-    .profile__container .profile{
-        display: flex;
-        margin: 0;
-        width: 100%;
-    }
-  
-
-    .profile__container .profile .profile__details{
-        width: 90%;
-    }
-
-    .profile__details .hero__details{
-        display: flex;
-        flex-direction: column;
-    }
-    .profile__details .hero__details .profile__action__btns{
-        display: flex;
-        justify-content: space-around;
-        width: 100%;
-        flex-direction: row;
-        padding: 1rem;
-    }
-    .profile__details .hero__details .profile__action__btns button{
-        
-        font-size: 0.7rem;
-        width: 6rem;
-    }
-    .profile__details .hero__follow{
-        margin-top: 0;
-    }
-  }

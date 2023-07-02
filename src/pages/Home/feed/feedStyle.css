@@ -108,7 +108,7 @@ textarea{
     position: relative;
     min-height: 15rem;
     padding: 1rem;
-    box-shadow: 2px 3px 15px #d1cfcf1c;
+    box-shadow: 1px 1px 10px #d1cfcf0c;
     border-radius: 1rem;
 }
 
@@ -215,3 +215,22 @@ justify-content: center;
     color: #949090;
     cursor: pointer;
 }
+
+
+@media (max-width:480px){
+
+
+    .feed__container{
+      width: 100%;
+      margin: 0;
+    }
+    .naviation__container{
+      display: none;
+    }
+    .create__post__container{
+        display: none;
+    }
+    .post__main{
+        width: 90%;
+    }
+  }

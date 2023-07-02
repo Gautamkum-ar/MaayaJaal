@@ -11,3 +11,12 @@
   ---font-color:#ffff;
   ---btn-color:#00dfc4;
 }
+
+.App{
+  background: var(---background);
+}
+
+
+
+
+

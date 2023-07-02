@@ -15,11 +15,8 @@ flex-direction: column;
 }
 
 
-@media screen and (max-width:600px) {
-
+@media (max-width:400px) {
     .home__main{
-        display: flex;
-        flex-direction: column;
+        width: 100%;
     }
-    
 }

@@ -2,9 +2,12 @@ import { useState } from "react";
 import { usePost } from "../../contexts/postContext";
 import "../comments/commentStyle.css";
 import { toast } from "react-toastify";
+import { useAuth } from "../../contexts/authContext";
 
-export const Comments = ({ post, profileData }) => {
+export const Comments = ({ post }) => {
   const [commentInput, setCommentInput] = useState("");
+
+  const { userData } = useAuth();
 
   const { state, commentHandler, deleteCommentHandler } = usePost();
 
@@ -28,11 +31,13 @@ export const Comments = ({ post, profileData }) => {
             commentInput === ""
               ? toast.warning("Please write something")
               : commentHandler(post._id, commentInput);
+            setCommentInput("");
           }}
         >
           Post
         </button>
       </div>
+
       {commentData
         .filter((comment) => comment.postId.toString() === post._id)
         .map((cmt) => {
@@ -46,16 +51,19 @@ export const Comments = ({ post, profileData }) => {
               <section className="comment__text">
                 <p>{comment}</p>
               </section>
-              <section className="comment__user">
-                <img src={avatar} alt="" />
-              </section>
+
               <button
-                style={{ display: profileData._id === _id ? "block" : "none" }}
+                style={{
+                  display: userData._id === _id ? "block" : "none",
+                }}
                 className="delete__post__btn"
-                onClick={() => deleteCommentHandler(_id)}
+                onClick={() => deleteCommentHandler(cmt._id)}
               >
                 Delete
               </button>
+              <section className="comment__user">
+                <img src={avatar} alt="" />
+              </section>
             </div>
           );
         })}

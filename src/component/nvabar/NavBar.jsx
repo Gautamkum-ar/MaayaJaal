@@ -3,12 +3,20 @@ import "./style.css";
 import { useProfile } from "../../contexts/profileContext";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
+import { useAuth } from "../../contexts/authContext";
 
 export const NavBar = () => {
+  const { state, setState } = useAuth();
   const { getProfileData } = useProfile();
 
   const navigate = useNavigate();
   const logOutHnadler = () => {
+    setState({
+      ...state,
+      authenticated: false,
+      loading: false,
+      userData: null,
+    });
     localStorage.removeItem("token");
     localStorage.removeItem("avatar");
     navigate("/");
@@ -27,7 +35,7 @@ export const NavBar = () => {
       </p>
       <div className="user__profile">
         <img
-          src={localStorage.getItem("avatar")}
+          src={state.userData.avatar}
           alt="user"
           onClick={() => {
             getProfileData();

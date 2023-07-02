@@ -8,6 +8,7 @@ export const Feeds = () => {
   const { state } = usePost();
   const posts = state?.postData;
   const likePostData = state?.likePostData;
+  console.log(state.postData);
   return (
     <div className="feed__container">
       <CreatePost />

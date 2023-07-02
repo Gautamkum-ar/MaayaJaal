@@ -1,7 +1,7 @@
 
 
 .suggestion__container{
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@
     gap: 1rem;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width:80%;
     margin: 2rem;
 
 }
@@ -38,9 +38,17 @@
 .suggestions{
     display: flex;
     flex-direction: column;
-    width: 90%;
+    margin: auto;
+    width: 70%;
+    height: 50vh;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-width: thin;
 
 }
+.suggestions::-webkit-scrollbar {
+    width: 12px;
+  }
 .suggestions h2{
     display: flex;
     justify-content: center;
@@ -66,6 +74,8 @@
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
+    cursor: pointer;
+    margin-right: 1rem;
     background: rgb(202, 199, 199);
 }
 .suggest__user .user__name{
@@ -89,3 +99,16 @@
     padding: 0.5rem;
     margin-left: 3rem;
 }
+
+
+@media only screen and (max-width:600px){
+
+    .suggestion__container{
+        display: none;
+    }
+    .suggestion__container .filter__buttons{
+        display: none;
+    }
+  
+    
+  }

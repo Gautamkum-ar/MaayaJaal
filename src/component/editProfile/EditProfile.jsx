@@ -1,16 +1,13 @@
 import { toast } from "react-toastify";
 import { useProfile } from "../../contexts/profileContext";
 import "./style.css";
+import { useState } from "react";
 
 export const EditProfile = ({ setEditBtn }) => {
-  const {
-    setEditProfile,
-    editProfile,
-    state,
-    handleAvatar,
-    editProfileHandler,
-  } = useProfile();
-
+  const { state, handleAvatar, editProfileHandler } = useProfile();
+  const [editProfile, setEditProfile] = useState({
+    ...state.profileData,
+  });
   return (
     <div className="edit__profile__container">
       <div className="edit__profile__main">
@@ -19,12 +16,7 @@ export const EditProfile = ({ setEditBtn }) => {
           X
         </button>
         <div className="change__user__avatar">
-          <img
-            src={
-              editProfile.image ? editProfile.image : state.profileData.avatar
-            }
-            alt=""
-          />
+          <img src={editProfile.avatar} alt="" />
           <input
             className="select"
             placeholder="pic"
@@ -77,7 +69,7 @@ export const EditProfile = ({ setEditBtn }) => {
         <button
           className="upload__btn"
           onClick={() => {
-            editProfileHandler();
+            editProfileHandler(editProfile);
             setEditBtn(false);
           }}
         >

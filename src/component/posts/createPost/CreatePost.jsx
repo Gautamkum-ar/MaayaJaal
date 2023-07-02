@@ -1,8 +1,10 @@
 import { toast } from "react-toastify";
 import { usePost } from "../../../contexts/postContext";
+import { useAuth } from "../../../contexts/authContext";
 
 export const CreatePost = () => {
   const { setCreatePost, createPost, createPostHandler } = usePost();
+  const { state } = useAuth();
 
   const handleImage = (e) => {
     const file = e.target.files[0];
@@ -15,7 +17,7 @@ export const CreatePost = () => {
       setCreatePost({ ...createPost, imageUrl: reader.result });
     };
   };
-  const avatar = localStorage.getItem("avatar");
+  const avatar = state.userData.avatar;
 
   return (
     <div className="create__post__container">

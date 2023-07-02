@@ -3,7 +3,7 @@ export const proReducer = (state, { type, payload }) => {
     case "GET_PROFILE": {
       return {
         ...state,
-        profileData: payload,
+        profileData: payload.user,followerData:payload.follower
       };
     }
 
@@ -17,6 +17,18 @@ export const proReducer = (state, { type, payload }) => {
       return {
         ...state,
         profileData: payload,
+      };
+    }
+    case "FIND_SINGLE_PROFILE": {
+      return {
+        ...state,
+        singleUserData: payload,
+      };
+    }
+    case "GET_FOLLOWERS": {
+      return {
+        ...state,
+        followerData: payload,
       };
     }
     default:

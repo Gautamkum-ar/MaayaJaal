@@ -1,8 +1,10 @@
 import { FaBookmark, FaHeart, FaHome, FaWpexplorer } from "react-icons/fa";
 import "../navigation/navStyle.css";
 import { Link } from "react-router-dom";
+import { useBookMark } from "../../../contexts/bookmarkContext";
 
 export const Navigation = () => {
+  const { getBookMark } = useBookMark();
   return (
     <div className="naviation__container">
       <div className="navigation__main">
@@ -17,7 +19,7 @@ export const Navigation = () => {
           Explore
         </Link>
         <Link className="navigations">
-          <FaBookmark /> BookMarks
+          <FaBookmark onClick={() => getBookMark()} /> BookMarks
         </Link>
         <Link className="navigations">
           {" "}

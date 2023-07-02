@@ -11,12 +11,15 @@ import { useNavigate } from "react-router-dom";
 
 import baseUrl from "../utils/baseUrl";
 import { toast } from "react-toastify";
+import { toHaveAttribute } from "@testing-library/jest-dom/matchers";
 
 const ProfileContext = createContext();
 
 const initialState = {
   profileData: {},
   allusers: [],
+  singleUserData: {},
+  followerData: [],
 };
 
 export const ProfileContextProvider = ({ children }) => {
@@ -24,12 +27,6 @@ export const ProfileContextProvider = ({ children }) => {
 
   const [imag, setImage] = useState();
   const [isProfileLoading, setIsProfileLoading] = useState(false);
-
-  const [editProfile, setEditProfile] = useState({
-    name: "",
-    bio: "",
-    userName: "",
-  });
 
   const handleAvatar = (e) => {
     const file = e.target.files[0];
@@ -56,18 +53,18 @@ export const ProfileContextProvider = ({ children }) => {
         },
       });
 
-      localStorage.removeItem("avatar");
-      localStorage.setItem("avatar", response.data.data.avatar);
-      dispatch({ type: "GET_PROFILE", payload: response.data.data });
+      if (response.status == 200) {
+        dispatch({ type: "GET_PROFILE", payload: response.data.data });
 
-      setIsProfileLoading(false);
+        setIsProfileLoading(false);
+      }
     } catch (error) {
       setIsProfileLoading(false);
       toast.error("Something went wrong");
     }
   };
 
-  const editProfileHandler = async () => {
+  const editProfileHandler = async (editProfile) => {
     setIsProfileLoading(true);
     const encodedToken = `Bearer ${localStorage.getItem("token")}`;
 
@@ -89,6 +86,7 @@ export const ProfileContextProvider = ({ children }) => {
         localStorage.removeItem("avatar");
         localStorage.setItem("avatar", response.data.data.avatar);
         dispatch({ type: "UPDATE_PROFILE", payload: response.data.data });
+        toast.success("Porfile Updated successfully");
       }
 
       setIsProfileLoading(false);
@@ -115,8 +113,29 @@ export const ProfileContextProvider = ({ children }) => {
     }
   };
 
+  const followingHandler = async (id) => {
+    setIsProfileLoading(true);
+    try {
+      const response = await axios.post(
+        `${baseUrl}/follow/${id}`,
+        {},
+        {
+          headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
+        }
+      );
+      if (response.status === 200) {
+        toast.success(response.data.message);
+        dispatch({ type: "GET_FOLLOWERS", payload: response.data.data });
+      }
+      setIsProfileLoading(false);
+    } catch (error) {
+      setIsProfileLoading(false);
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
-    getProfileData();
+    // getProfileData();
     getAllUsers();
   }, []);
 
@@ -125,11 +144,12 @@ export const ProfileContextProvider = ({ children }) => {
       value={{
         getProfileData,
         state,
+        dispatch,
         editProfileHandler,
-        editProfile,
-        setEditProfile,
+
         handleAvatar,
         isProfileLoading,
+        followingHandler,
       }}
     >
       {children}

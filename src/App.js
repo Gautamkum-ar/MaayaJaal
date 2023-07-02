@@ -1,8 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import "./pages/Home/feed/feedStyle.css";
-import { SingUp } from "./pages/signup/SignUp";
-import { Login } from "./pages/login/Login";
 import { Landing } from "./pages/landing/Landing";
 import { Home } from "./pages/Home/Home";
 
@@ -11,26 +9,28 @@ import "react-toastify/dist/ReactToastify.css";
 import { Profile } from "./pages/profile/Profile";
 import { useAuth } from "./contexts/authContext";
 import { Loader } from "./component/loader/Loader";
-import { usePost } from "./contexts/postContext";
-import { useProfile } from "./contexts/profileContext";
-// import { RequireAuth } from "./RequireAuth/requireAuth";
+import { SingleProfile } from "./pages/singleUser/SinglePorfile";
+import { ProtectedRoutes, PublicRoutes } from "./utils/routes";
 
 function App() {
-  const { isLoading } = useAuth();
-  const { isPostLoading } = usePost();
-  const { isProfileLoading } = useProfile();
+  const { loading } = useAuth();
   return (
     <div className="App">
       <ToastContainer />
-      {isLoading || isPostLoading || (isProfileLoading && <Loader />)}
-      <Routes>
-        <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home />} />
-
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SingUp />} />
-      </Routes>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Routes>
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/singleuser" element={<SingleProfile />} />
+          </Route>
+          <Route element={<PublicRoutes />}>
+            <Route path="/" element={<Landing />} />
+          </Route>
+        </Routes>
+      )}
     </div>
   );
 }

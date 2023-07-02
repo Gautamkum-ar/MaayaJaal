@@ -93,3 +93,15 @@ font-size: 1.3rem;
 cursor: pointer;
 
 }
+
+@media (max-width:480px){
+
+    .search{
+      display: none;
+    }
+    .user__profile{
+        width: 65%;
+        justify-self: flex-end;
+        margin-right: 1rem;
+    }
+  }

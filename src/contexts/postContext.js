@@ -41,6 +41,7 @@ export const PostContextProvider = ({ children }) => {
       const response = await axios.get(`${baseUrl}/getallpost`);
 
       dispatch({ type: "GET_POST", payload: response.data.data });
+      console.log(response, "post");
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -49,6 +50,7 @@ export const PostContextProvider = ({ children }) => {
   };
 
   const createPostHandler = async () => {
+    setIsLoading(true);
     const encodedToken = `Bearer ${localStorage.getItem("token")}`;
     const caption = createPost.caption;
     const image = createPost.imageUrl;

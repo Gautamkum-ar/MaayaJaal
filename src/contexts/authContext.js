@@ -1,6 +1,6 @@
 import axios from "axios";
-import { createContext, useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { createContext, useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import baseUrl from "../utils/baseUrl";
@@ -26,6 +26,58 @@ export const AuthContextProvider = ({ children }) => {
   });
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const [state, setState] = useState({
+    authenticated: false,
+    loading: false,
+    userData: null,
+  });
+  const text = "hello";
+  const token = localStorage.getItem("token");
+
+  const handleRoutes = async () => {
+    const encodedToken = localStorage.getItem("token");
+    if (!encodedToken) return;
+
+    if (encodedToken) {
+      try {
+        setState({
+          ...state,
+          loading: true,
+          authenticated: false,
+          userData: null,
+        });
+        const { data } = await axios.get(`${baseUrl}/profile`, {
+          headers: {
+            authorization: `Bearer ${encodedToken}`,
+          },
+        });
+        if (data.success) {
+          setState({
+            ...state,
+            authenticated: true,
+            userData: data.data.user,
+            loading: false,
+          });
+        }
+        console.log(data);
+      } catch (error) {
+        toast.error("Session Expire Please login again");
+        setState({
+          ...state,
+          loading: false,
+        });
+        console.log(error);
+      }
+    }
+  };
+
+  useEffect(() => {
+    handleRoutes();
+  }, [token]);
+
+  const { authenticated, loading, userData } = state;
 
   const loginHandler = async () => {
     setIsLoading(true);
@@ -40,12 +92,13 @@ export const AuthContextProvider = ({ children }) => {
         setIsLoading(false);
         setSaveLoginData(response.data.data);
 
-        localStorage.setItem("avatar", response.data.data.user.avatar);
         localStorage.setItem("token", response.data.data.encodedToken);
 
         toast.success(response.data.message);
 
-        navigate("/home");
+        navigate(
+          location.state?.from?.pathname ? location.state.from?.pathname : "/"
+        );
       }
     } catch (error) {
       setIsLoading(false);
@@ -65,7 +118,6 @@ export const AuthContextProvider = ({ children }) => {
       const response = await axios.post(`${baseUrl}/login`, cred);
       setIsLoading(false);
       setSaveLoginData(response.data.data);
-      localStorage.setItem("avatar", response.data.data.user.avatar);
       localStorage.setItem("token", response.data.data.encodedToken);
       toast.success(response.data.message);
       navigate("/home");
@@ -116,6 +168,11 @@ export const AuthContextProvider = ({ children }) => {
         isLoading,
         toggleLogin,
         setToggleLogin,
+        state,
+        setState,
+        authenticated,
+        loading,
+        userData,
       }}
     >
       {children}

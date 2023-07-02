@@ -53,3 +53,12 @@
   
     
 }
+
+
+@media (max-width:480px){
+
+    .naviation__container{
+      display: none;
+    }
+    
+  }

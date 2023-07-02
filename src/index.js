@@ -5,20 +5,21 @@ import { BrowserRouter } from "react-router-dom";
 import { AuthContextProvider } from "./contexts/authContext";
 import { ProfileContextProvider } from "./contexts/profileContext";
 import { PostContextProvider } from "./contexts/postContext";
+import { BookMarkProvider } from "./contexts/bookmarkContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <AuthContextProvider>
-        <ProfileContextProvider>
-          <PostContextProvider>
+  <BrowserRouter>
+    <AuthContextProvider>
+      <ProfileContextProvider>
+        <PostContextProvider>
+          <BookMarkProvider>
             <App />
-          </PostContextProvider>
-        </ProfileContextProvider>
-      </AuthContextProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+          </BookMarkProvider>
+        </PostContextProvider>
+      </ProfileContextProvider>
+    </AuthContextProvider>
+  </BrowserRouter>
 );
 
 

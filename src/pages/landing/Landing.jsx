@@ -31,12 +31,6 @@ export const Landing = () => {
             </p>
           </>
         )}
-
-        {/* {signUp ? (
-          <button onClick={() => setSignUp(false)}>Login</button>
-        ) : (
-          <button onClick={() => setSignUp(true)}>SignUp</button>
-        )} */}
       </section>
     </div>
   );
