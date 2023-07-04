@@ -17,6 +17,10 @@
 }
 
 
+html{
+  background: var(---background);
+}
+
 
 
 

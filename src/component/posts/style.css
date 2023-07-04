@@ -39,3 +39,10 @@ color: red;
 cursor: pointer;
 }
 
+
+.comment a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+}

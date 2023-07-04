@@ -3,6 +3,7 @@ import { usePost } from "../../contexts/postContext";
 import "../comments/commentStyle.css";
 import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/authContext";
+import { AiOutlineSend } from "react-icons/ai";
 
 export const Comments = ({ post }) => {
   const [commentInput, setCommentInput] = useState("");
@@ -16,9 +17,7 @@ export const Comments = ({ post }) => {
   return (
     <div className="comments">
       <h3>Comments</h3>
-      {/* <p className="comment__icon">
-          <FaCommentDots />
-        </p> */}
+
       <div className="new__comment">
         <input
           className="comment__input"
@@ -34,7 +33,7 @@ export const Comments = ({ post }) => {
             setCommentInput("");
           }}
         >
-          Post
+          <AiOutlineSend />
         </button>
       </div>
 

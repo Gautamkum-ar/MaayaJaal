@@ -15,11 +15,10 @@
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
-    /* border: 1px solid #949090; */
-    width: 70%;
+    width: 80%;
     min-height: 15rem;
     margin-bottom: 2rem;
-    box-shadow: 2px 3px 15px #73727227;
+    box-shadow: 1px 1px 15px #73727227;
     border-radius: 1rem;
     overflow: hidden;
     padding: 1rem;
@@ -103,12 +102,12 @@ textarea{
 .post__main{
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 100%;
     margin:1rem auto;
     position: relative;
     min-height: 15rem;
     padding: 1rem;
-    box-shadow: 1px 1px 10px #d1cfcf0c;
+    box-shadow: 1px 1px 10px #d1cfcf09;
     border-radius: 1rem;
 }
 

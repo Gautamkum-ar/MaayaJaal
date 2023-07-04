@@ -9,6 +9,7 @@ import { NavBar } from "../../component/nvabar/NavBar";
 import "../bookmark/style.css";
 import { Navigation } from "../Home/navigation/Navigaton";
 import { Suggestion } from "../Home/suggestion/Suggestion";
+import { Link } from "react-router-dom";
 
 export const BookMarks = () => {
   const { state } = usePost();
@@ -31,7 +32,14 @@ export const BookMarks = () => {
       <div className="bookmark__main">
         <Navigation />
         <div className="middle">
-          <Posts posts={filterData} />
+          {filterData.length > 0 ? (
+            <Posts posts={filterData} />
+          ) : (
+            <p className="no__post__text">
+              Opps! there is no bookmark post{" "}
+              <Link to="/home">Continue Browsing</Link>
+            </p>
+          )}
         </div>
         <Suggestion />
       </div>

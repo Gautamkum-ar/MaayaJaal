@@ -10,9 +10,15 @@ import { usePost } from "../../contexts/postContext";
 import { Posts } from "../../component/posts/Posts";
 import { Loader } from "../../component/loader/Loader";
 import { useAuth } from "../../contexts/authContext";
+import { FaArrowLeft } from "react-icons/fa";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Footer } from "../../component/footer/Footer";
 
 export const Profile = () => {
   const [editBtn, setEditBtn] = useState(false);
+
+  const navigate = useNavigate();
+
   const { state, isProfileLoading } = useProfile();
   const { posts } = usePost();
   const { userData } = useAuth();
@@ -45,15 +51,25 @@ export const Profile = () => {
               <EditProfile setEditBtn={setEditBtn} />
             ) : (
               <div className="profile">
-                <div className="profile__details">
+                <div className="profile__nav">
+                  <div className="back__btn">
+                    <FaArrowLeft onClick={() => navigate("/home")} />
+                  </div>
+
+                  <section className="user_name_nav">
+                    <h1>{name}</h1>
+                    <p>{filterUserPost.length} posts</p>
+                  </section>
+                </div>
+                <div className="profile__detail">
                   <section className="hero">
                     <img className="cover" src={cover} alt="" />
                     <img className="avatar" src={avatar} alt={name} />
 
-                    <div className="hero__details">
+                    <div className="hero__detail">
                       <div>
                         <h3>{name}</h3>
-                        <p>@{userName}</p>
+                        <span>@{userName}</span>
                         <p>{bio}</p>
                       </div>
                       <div className="profile__action__btns">
@@ -64,7 +80,6 @@ export const Profile = () => {
                         >
                           Edit Profile
                         </button>
-                        <button>Delete Profile</button>
                       </div>
                     </div>
                   </section>
@@ -83,6 +98,7 @@ export const Profile = () => {
           </div>
         </>
       )}
+      <Footer />
     </div>
   );
 };

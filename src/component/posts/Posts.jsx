@@ -1,4 +1,4 @@
-import { FaBookmark,  FaThumbsUp } from "react-icons/fa";
+import { FaBookmark, FaCommentDots, FaThumbsUp } from "react-icons/fa";
 
 import { usePost } from "../../contexts/postContext";
 import { EditPost } from "./EditPost";
@@ -6,6 +6,7 @@ import { Comments } from "../comments/Comment";
 import { Loader } from "../loader/Loader";
 import { useAuth } from "../../contexts/authContext";
 import { useBookMark } from "../../contexts/bookmarkContext";
+import { Link } from "react-router-dom";
 
 export const Posts = ({ posts }) => {
   const { userData } = useAuth();
@@ -88,9 +89,11 @@ export const Posts = ({ posts }) => {
                     <span>({likes})</span>{" "}
                     <FaThumbsUp onClick={() => likePostHandler(post._id)} />
                   </p>
-                  {/* <p className="comment">
-                <FaCommentDots />
-              </p> */}
+                  <p className="comment">
+                    <Link to={`/singlepost/${post._id}`}>
+                      <FaCommentDots />
+                    </Link>
+                  </p>
                   <p className="share">
                     <FaBookmark onClick={() => addToBookMark(post._id)} />
                   </p>
@@ -98,7 +101,6 @@ export const Posts = ({ posts }) => {
                     Publish at: {createdAt.slice(0, 10)}
                   </p>
                 </section>
-                <Comments post={post} />
               </div>
             );
           })}

@@ -18,8 +18,25 @@
     margin-left: 18%;
     border: 1px solid #999;
     padding-top: 2rem;
+    min-height: 90vh;
 }
 
+.no__post__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+    font-size: 3rem;
+    color: #999;
+}
+.no__post__text a{
+    text-decoration: none;
+    font-size: 1.4rem;
+    color: var(---btn-color);
+    
+}
 
 @media only screen and (max-width:600px){
 

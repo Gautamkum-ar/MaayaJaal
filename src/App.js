@@ -13,6 +13,7 @@ import { SingleProfile } from "./pages/singleUser/SinglePorfile";
 import { ProtectedRoutes, PublicRoutes } from "./utils/routes";
 import { BookMarks } from "./pages/bookmark/BookMark";
 import { MobileNav } from "./component/mobileNav/MobileNav";
+import { SinglePost } from "./pages/singlepost/SinglePost";
 
 function App() {
   const { loading } = useAuth();
@@ -29,6 +30,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/singleuser" element={<SingleProfile />} />
             <Route path="/bookmark" element={<BookMarks />} />
+            <Route path="/singlepost/:postId" element={<SinglePost />} />
           </Route>
           <Route element={<PublicRoutes />}>
             <Route path="/" element={<Landing />} />

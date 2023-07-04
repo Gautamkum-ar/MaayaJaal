@@ -5,25 +5,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* background: #001bea2b; */
-    position: fixed;
-    margin-top: 4rem;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
+    width: 100%;
+    height: 90vh;
     z-index: 10;
-}
-
-.edit__profile__main{
+    margin-top: 4rem;
+  }
+  
+  .edit__profile__main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40rem;
-    height: 35rem;
+    width: 50%;
+    height: 100%;
+    padding: 2rem;
     background:#bcb9b934;
-    margin-top: 2rem;
     position: relative;
+    border-radius:0.5rem;
 }
 .edit__profile__main h1{
 
@@ -98,12 +95,13 @@
     justify-content: center;
     align-items: center;
     display: flex;
+    flex-direction: column;
     width: 30%;
     height: 2rem;
 
 }
 .change__name input{
-    height: 2rem;
+    height: 10%;
     padding: 1rem;
 }
   .change__bio{

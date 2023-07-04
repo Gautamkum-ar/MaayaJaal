@@ -1,3 +1,4 @@
+import { FaArrowLeft } from "react-icons/fa";
 import { NavBar } from "../../component/nvabar/NavBar";
 import { Posts } from "../../component/posts/Posts";
 import { useAuth } from "../../contexts/authContext";
@@ -6,8 +7,11 @@ import { useProfile } from "../../contexts/profileContext";
 import { Navigation } from "../Home/navigation/Navigaton";
 import { Suggestion } from "../Home/suggestion/Suggestion";
 import "../singleUser/style.css";
+import { useNavigate } from "react-router-dom";
+import { Footer } from "../../component/footer/Footer";
 
 export const SingleProfile = () => {
+  const navigate = useNavigate();
   const { state, followingHandler } = useProfile();
   const { posts } = usePost();
   const { userData } = useAuth();
@@ -40,6 +44,15 @@ export const SingleProfile = () => {
         <Navigation />
 
         <div className="profile">
+          <div className="profile__nav">
+            <div className="back__btn">
+              <FaArrowLeft onClick={() => navigate("/home")} />
+            </div>
+            <section className="user_name_nav">
+              <h1>{name}</h1>
+              <p>{singleUserPost.length} posts</p>
+            </section>
+          </div>
           <div className="profile__details">
             <section className="hero">
               <img className="cover" src={cover} alt="" />
@@ -71,6 +84,7 @@ export const SingleProfile = () => {
 
         <Suggestion />
       </div>
+      <Footer />
     </div>
   );
 };

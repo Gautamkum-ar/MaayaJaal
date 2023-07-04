@@ -1,3 +1,4 @@
+import { Footer } from "../../component/footer/Footer";
 import { Loader } from "../../component/loader/Loader";
 import { MobileNav } from "../../component/mobileNav/MobileNav";
 import { NavBar } from "../../component/nvabar/NavBar";
@@ -25,6 +26,7 @@ export const Home = () => {
         )}
 
         <MobileNav />
+        <Footer />
       </div>
     </>
   );

@@ -4,11 +4,10 @@
 .comments{
     display: flex;
     flex-direction: column;
-/* justify-content: center; */
-/* align-items: center; */
-    width: 100%;
+
+    width: 80%;
     min-height: 4rem;
-    margin-top: 1rem;
+    margin:-1rem auto;
     
     
     
@@ -18,7 +17,7 @@
     align-items: center;
     width: 100%;
     color: #888;
-    border-top: 1px solid #88888858;
+    /* border-top: 1px solid #88888858; */
     padding: 0.5rem;
 }
 .comment__icon{
@@ -29,6 +28,7 @@
     margin-top: 1rem;
     color: #888;
     width: 2rem;
+     
 }
 .new__comment{
     display: flex;
@@ -36,7 +36,7 @@
 }
 .comments .comment__input{
     display: flex;
-    width: 80%;
+    width: 90%;
     height:2rem;
     padding: 0.5rem;
     background: none;
@@ -47,6 +47,7 @@
     outline: none;
     overflow: hidden;
     font-size: 1rem;
+    margin: auto;
     border-bottom: 1px solid #88888858;
     
 }
@@ -55,13 +56,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 20%;
     height: 2rem;
-    border: 1px solid var(---btn-color);
     background: none;
+    border: none;
     color: aliceblue;
-    border-radius: 5px ;
+    font-size: 1.2rem;
+    border-radius: 5px;
     cursor: pointer;
+    color: #888;
+    
 
 }
 
