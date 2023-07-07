@@ -13,9 +13,14 @@ import { useAuth } from "../../contexts/authContext";
 import { FaArrowLeft } from "react-icons/fa";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Footer } from "../../component/footer/Footer";
+import { Followers } from "../../component/followes/Followes";
+import { Following } from "../../component/following/Following";
 
 export const Profile = () => {
   const [editBtn, setEditBtn] = useState(false);
+  const [togglePost, setTogglePost] = useState(true);
+  const [toggleFollowers, setToggleFollowers] = useState(false);
+  const [toggleFollowing, setFollowing] = useState(false);
 
   const navigate = useNavigate();
 
@@ -35,7 +40,6 @@ export const Profile = () => {
   );
 
   const filterUserPost = posts.filter((post) => post.userId._id === _id);
-  console.log(userData);
 
   return (
     <div className="profile__container">
@@ -80,13 +84,44 @@ export const Profile = () => {
               </div>
             </section>
             <section className="hero__follow">
-              <p>Posts({filterUserPost.length})</p>
-              <p>Followers({followers.length})</p>
-              <p>Following({followByThisUser.length})</p>
+              <p
+                style={{ background: togglePost ? "rgba(0,0,0,0.1)" : "" }}
+                onClick={() => {
+                  setToggleFollowers(false);
+                  setFollowing(false);
+                  setTogglePost(true);
+                }}
+              >
+                Posts({filterUserPost.length})
+              </p>
+              <p
+                style={{
+                  background: toggleFollowers ? "rgba(0,0,0,0.1)" : "",
+                }}
+                onClick={() => {
+                  setToggleFollowers(true);
+                  setFollowing(false);
+                  setTogglePost(false);
+                }}
+              >
+                Followers({followers.length})
+              </p>
+              <p
+                style={{ background: toggleFollowing ? "rgba(0,0,0,0.1)" : "" }}
+                onClick={() => {
+                  setToggleFollowers(false);
+                  setFollowing(true);
+                  setTogglePost(false);
+                }}
+              >
+                Following({followByThisUser.length})
+              </p>
             </section>
           </div>
           <div className="user__post">
-            <Posts posts={filterUserPost} />
+            {togglePost && <Posts posts={filterUserPost} />}
+            {toggleFollowers && <Followers followers={followers} />}
+            {toggleFollowing && <Following following={followByThisUser} />}
           </div>
         </div>
         <Suggestion />

@@ -9,8 +9,14 @@ import { Suggestion } from "../Home/suggestion/Suggestion";
 import "../singleUser/style.css";
 import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "../../component/footer/Footer";
+import { useState } from "react";
+import { Followers } from "../../component/followes/Followes";
+import { Following } from "../../component/following/Following";
 
 export const SingleProfile = () => {
+  const [togglePost, setTogglePost] = useState(true);
+  const [toggleFollowers, setToggleFollowers] = useState(false);
+  const [toggleFollowing, setFollowing] = useState(false);
   const navigate = useNavigate();
   const { state, followingHandler } = useProfile();
   const { posts } = usePost();
@@ -74,13 +80,44 @@ export const SingleProfile = () => {
               </div>
             </section>
             <section className="hero__follow">
-              <p>Posts({singleUserPost.length})</p>
-              <p>Followers({followers.length})</p>
-              <p>Following({followByThisUser.length})</p>
+              <p
+                style={{ background: togglePost ? "rgba(0,0,0,0.1)" : "" }}
+                onClick={() => {
+                  setToggleFollowers(false);
+                  setFollowing(false);
+                  setTogglePost(true);
+                }}
+              >
+                Posts({singleUserPost.length})
+              </p>
+              <p
+                style={{
+                  background: toggleFollowers ? "rgba(0,0,0,0.1)" : "",
+                }}
+                onClick={() => {
+                  setToggleFollowers(true);
+                  setFollowing(false);
+                  setTogglePost(false);
+                }}
+              >
+                Followers({followers.length})
+              </p>
+              <p
+                style={{ background: toggleFollowing ? "rgba(0,0,0,0.1)" : "" }}
+                onClick={() => {
+                  setToggleFollowers(false);
+                  setFollowing(true);
+                  setTogglePost(false);
+                }}
+              >
+                Following({followByThisUser.length})
+              </p>
             </section>
           </div>
           <div className="user__post">
-            <Posts posts={singleUserPost} />
+            {togglePost && <Posts posts={singleUserPost} />}
+            {toggleFollowers && <Followers followers={followers} />}
+            {toggleFollowing && <Following following={followByThisUser} />}
           </div>
         </div>
 

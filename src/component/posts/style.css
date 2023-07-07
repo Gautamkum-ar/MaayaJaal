@@ -72,3 +72,11 @@ cursor: pointer;
     color: red;
     background: #888;
 }
+
+.show__all__post h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    color: #9999;
+}
