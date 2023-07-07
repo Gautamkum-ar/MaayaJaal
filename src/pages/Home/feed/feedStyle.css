@@ -22,6 +22,7 @@
     border-radius: 1rem;
     overflow: hidden;
     padding: 1rem;
+    position: relative;
     
 }
 .create__post_top{
@@ -102,7 +103,7 @@ textarea{
 .post__main{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 80%;
     margin:1rem auto;
     position: relative;
     min-height: 15rem;
@@ -157,12 +158,16 @@ justify-content: center;
     flex-direction: column;
     color: #949090;
     padding: 1rem 2rem;
-    width: 90%;
+    width: 95%;
     margin: 0.5rem auto;
     min-height: 6rem;
 }
 .caption p{
     margin-bottom: 1rem;
+}
+.caption img{
+    display: flex;
+    height: auto;
 }
 .created__date {
     display: flex;

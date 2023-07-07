@@ -1,0 +1,58 @@
+
+
+.avatar__container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%;
+    width: 70%;
+    height: 50%;
+    background: #999;
+    padding: 1rem;
+
+}
+.avatar__container button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background:none;
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    width: 2rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    height: 2rem;
+    color: rgb(115, 6, 6);
+}
+
+.avatar__container label{
+    display: flex;
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    cursor: pointer;
+
+    margin: 0.5rem;
+
+}
+
+.avatar__container input[type='radio']{
+    display: flex;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+ opacity: 0;
+ cursor: pointer;
+}
+
+
+.avatar__container label img{
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+}

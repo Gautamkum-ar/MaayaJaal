@@ -24,9 +24,7 @@ export const EditPost = () => {
           X
         </button>
         <section className="edit__post_top">
-          <div className="profile_sec">
-            {/* <img src={avatar} alt="UP" /> */}
-          </div>
+          <div className="profile_sec"></div>
           <div className="input__field">
             <textarea
               name=""
@@ -37,7 +35,7 @@ export const EditPost = () => {
               onChange={(e) =>
                 setEditPostData({ ...editPostData, caption: e.target.value })
               }
-            ></textarea>
+            />
           </div>
         </section>
         <section className="create__post__bottom">
@@ -51,7 +49,7 @@ export const EditPost = () => {
               setToggleEditPost(false);
             }}
           >
-            Edit post
+            update
           </button>
         </section>
       </div>

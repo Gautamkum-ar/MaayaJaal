@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { toast } from "react-toastify";
+import EmojiPicker, { Emoji } from "emoji-picker-react";
+import { BsEmojiSmile } from "react-icons/bs";
+
 import { usePost } from "../../../contexts/postContext";
 import { useAuth } from "../../../contexts/authContext";
 
 export const CreatePost = () => {
+  const [toggleEmojis, setToggleEmojis] = useState(false);
+  const [emoji, setEmoji] = useState("");
+
+  console.log(emoji);
+
   const { setCreatePost, createPost, createPostHandler } = usePost();
   const { state } = useAuth();
 
@@ -24,6 +33,7 @@ export const CreatePost = () => {
       <section className="create__post_top">
         <div className="profile_sec">
           <img src={avatar} alt="UP" />
+          <Emoji />
         </div>
         <div className="input__field">
           <textarea
@@ -35,7 +45,10 @@ export const CreatePost = () => {
             onChange={(e) =>
               setCreatePost({ ...createPost, caption: e.target.value })
             }
-          ></textarea>
+          />
+          <p>
+            <Emoji unified="" size="25" />
+          </p>
         </div>
       </section>
       <section className="create__post__bottom">
@@ -48,6 +61,16 @@ export const CreatePost = () => {
               : handleImage(e);
           }}
         />
+
+        <p>
+          <BsEmojiSmile onClick={(e) => setToggleEmojis(!toggleEmojis)} />{" "}
+          {toggleEmojis && (
+            <div className="emoji__picker">
+              <span onClick={() => setToggleEmojis(false)}>X</span>
+              <EmojiPicker />
+            </div>
+          )}{" "}
+        </p>
         <button
           className="create__new_post"
           onClick={() => {

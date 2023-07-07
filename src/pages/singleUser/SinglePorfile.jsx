@@ -7,7 +7,7 @@ import { useProfile } from "../../contexts/profileContext";
 import { Navigation } from "../Home/navigation/Navigaton";
 import { Suggestion } from "../Home/suggestion/Suggestion";
 import "../singleUser/style.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "../../component/footer/Footer";
 
 export const SingleProfile = () => {
@@ -16,7 +16,8 @@ export const SingleProfile = () => {
   const { posts } = usePost();
   const { userData } = useAuth();
 
-  const { _id, avatar, cover, name, userName, bio } = state?.singleUserData;
+  const { _id, avatar, cover, name, userName, bio, portfolio } =
+    state?.singleUserData;
 
   const followerData = state?.followerData;
 
@@ -63,6 +64,7 @@ export const SingleProfile = () => {
                   <h3>{name}</h3>
                   <p>@{userName}</p>
                   <p>{bio}</p>
+                  <Link to={portfolio}>{portfolio}</Link>
                 </div>
                 <div className="follow__action">
                   <button onClick={() => followingHandler(_id)}>

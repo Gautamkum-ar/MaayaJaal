@@ -107,6 +107,7 @@ export const AuthContextProvider = ({ children }) => {
         : toast.warning(error.response.data.message);
     }
   };
+
   const guestLoginHandler = async () => {
     setIsLoading(true);
     try {

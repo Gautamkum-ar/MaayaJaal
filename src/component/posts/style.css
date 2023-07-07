@@ -46,3 +46,29 @@ cursor: pointer;
     align-items: center;
     color: #888;
 }
+
+
+
+.emoji__picker{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-direction: column;
+
+}
+
+.emoji__picker span{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    z-index: 1000;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    color: red;
+    background: #888;
+}

@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 
 import baseUrl from "../utils/baseUrl";
 import { toast } from "react-toastify";
-import { toHaveAttribute } from "@testing-library/jest-dom/matchers";
 
 const ProfileContext = createContext();
 
@@ -25,20 +24,7 @@ const initialState = {
 export const ProfileContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(proReducer, initialState);
 
-  const [imag, setImage] = useState();
   const [isProfileLoading, setIsProfileLoading] = useState(false);
-
-  const handleAvatar = (e) => {
-    const file = e.target.files[0];
-
-    const reader = new FileReader();
-
-    reader.readAsDataURL(file);
-
-    reader.onloadend = function () {
-      setImage(reader.result);
-    };
-  };
 
   const navigate = useNavigate();
 
@@ -71,20 +57,27 @@ export const ProfileContextProvider = ({ children }) => {
     try {
       const name = editProfile.name;
       const bio = editProfile.bio;
-      const image = imag;
+      const image = editProfile.avatar;
+      const avatars = editProfile.avatars;
       const userName = editProfile.userName;
+      const portfolio = editProfile.portfolio;
 
       const response = await axios.post(
         `${baseUrl}/editProfile`,
-        { name: name, bio: bio, image: image, userName: userName },
+        {
+          name: name,
+          bio: bio,
+          image: image,
+          userName: userName,
+          avatar: avatars,
+          portFolioLink: portfolio,
+        },
         {
           headers: { authorization: encodedToken },
         }
       );
 
       if (response.status === 200) {
-        localStorage.removeItem("avatar");
-        localStorage.setItem("avatar", response.data.data.avatar);
         dispatch({ type: "UPDATE_PROFILE", payload: response.data.data });
         toast.success("Porfile Updated successfully");
       }
@@ -135,7 +128,6 @@ export const ProfileContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // getProfileData();
     getAllUsers();
   }, []);
 
@@ -147,7 +139,6 @@ export const ProfileContextProvider = ({ children }) => {
         dispatch,
         editProfileHandler,
 
-        handleAvatar,
         isProfileLoading,
         followingHandler,
       }}
