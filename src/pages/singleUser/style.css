@@ -5,7 +5,6 @@
     justify-content: center;
     align-items: center;
         background: var(---background);
-       /* width: 100%; */
        margin-top: 4rem;
 }
 .single__profile__main{
@@ -138,4 +137,19 @@
     min-height: 40vh;
     padding: 3rem 0;
     background: rgba(0,0,0,0.1);
+}
+
+
+
+@media only screen and (max-width:600px){
+
+    .single__profile{
+        width: 100%;
+    }
+
+    .profile{
+        width: 100%;
+        margin: auto;
+    }
+    
 }

@@ -3,7 +3,7 @@ import { useProfile } from "../../contexts/profileContext";
 
 import "../searchoutput/Searcheduser.css";
 
-export const Searchdata = () => {
+export const Searchdata = ({ setUserInput }) => {
   const { state, dispatch } = useProfile();
   const navigate = useNavigate();
 
@@ -18,6 +18,7 @@ export const Searchdata = () => {
                 onClick={() => {
                   navigate("/singleuser");
                   dispatch({ type: "FIND_SINGLE_PROFILE", payload: user });
+                  setUserInput("");
                 }}
                 key={_id}
                 className="search__user"

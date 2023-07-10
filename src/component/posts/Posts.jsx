@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export const Posts = ({ posts }) => {
   const { userData } = useAuth();
-  const { addToBookMark } = useBookMark();
+  const { addToBookMark, bookmarkData } = useBookMark();
   const {
     state,
     setToggleEditPost,
@@ -102,7 +102,19 @@ export const Posts = ({ posts }) => {
                           <FaCommentDots />
                         </Link>
                       </p>
-                      <p className="share">
+                      <p
+                        className="share"
+                        style={{
+                          color: bookmarkData.find(
+                            (data) =>
+                              data.userId.toString() ===
+                                userData._id.toString() &&
+                              data.postId._id === post._id
+                          )
+                            ? "blue"
+                            : "",
+                        }}
+                      >
                         <FaBookmark onClick={() => addToBookMark(post._id)} />
                       </p>
                       <p className="created__date">

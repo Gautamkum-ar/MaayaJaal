@@ -61,7 +61,6 @@ export const AuthContextProvider = ({ children }) => {
             loading: false,
           });
         }
-        console.log(data);
       } catch (error) {
         toast.error("Session Expire Please login again");
         setState({
