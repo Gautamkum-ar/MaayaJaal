@@ -33,7 +33,7 @@ export const AuthContextProvider = ({ children }) => {
     loading: false,
     userData: null,
   });
-  const text = "hello";
+
   const token = localStorage.getItem("token");
 
   const handleRoutes = async () => {
@@ -77,6 +77,16 @@ export const AuthContextProvider = ({ children }) => {
     handleRoutes();
   }, [token]);
 
+  const logOutHnadler = () => {
+    setState({
+      ...state,
+      authenticated: false,
+      loading: false,
+      userData: null,
+    });
+    localStorage.removeItem("token");
+    navigate("/");
+  };
   const { authenticated, loading, userData } = state;
 
   const loginHandler = async () => {
@@ -117,6 +127,7 @@ export const AuthContextProvider = ({ children }) => {
       };
 
       const response = await axios.post(`${baseUrl}/login`, cred);
+
       setIsLoading(false);
       setSaveLoginData(response.data.data);
       localStorage.setItem("token", response.data.data.encodedToken);
@@ -143,7 +154,6 @@ export const AuthContextProvider = ({ children }) => {
           userName: signupData.userName,
         });
         setIsLoading(false);
-        console.log(response);
         toast.success(response.data.message);
         setToggleLogin(false);
       }
@@ -173,6 +183,7 @@ export const AuthContextProvider = ({ children }) => {
         setState,
         authenticated,
         loading,
+        logOutHnadler,
         userData,
       }}
     >

@@ -1,14 +1,16 @@
 import { FaEnvelope, FaLock } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 import "../login/style.css";
-import { useNavigate } from "react-router-dom";
+
 import { useAuth } from "../../contexts/authContext";
+
 export const Login = () => {
   const { loginData, setLoginData, loginHandler, guestLoginHandler } =
     useAuth();
 
   const navigate = useNavigate();
-  console.log(loginData);
+
   return (
     <div className="login__container">
       <form action="" onSubmit={(e) => e.preventDefault()}>

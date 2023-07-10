@@ -1,0 +1,82 @@
+
+
+.search__user__main{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 2.2rem;
+    right: 0;
+    left: 0;
+    width: 80%;
+    height: auto;
+    margin: auto    ;
+    background: var(---background);
+    box-shadow: 1px 1px 10px #3f3f3f;
+}
+.search__user__main .search__user{
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 95%;
+    margin: auto;
+    /* border-bottom: 1px solid #e5e0e0; */
+    padding: 0.8rem 0;
+    height: 4rem;
+}
+.search__user img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    background: rgb(202, 199, 199);
+}
+.search__user .user__name{
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    color: var(---font-color);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.not__found{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: #999;
+    height: 2rem;
+    
+
+}
+
+.search__input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.search__input input{
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    background: transparent;
+    border: 1px solid #826c6cf6;
+    border-radius: 5px;
+    color: #a3a8a8;
+
+    
+} 
+.search__input input:focus{
+    outline:1px solid #00dfc4;
+    border: none;
+
+}

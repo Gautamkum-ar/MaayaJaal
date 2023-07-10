@@ -1,17 +1,19 @@
 import { useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+
+import "../profile/style.css";
+import "../Home/feed/feedStyle.css";
+
 import { useProfile } from "../../contexts/profileContext";
 import { Navigation } from "../Home/navigation/Navigaton";
 import { Suggestion } from "../Home/suggestion/Suggestion";
 import { NavBar } from "../../component/nvabar/NavBar";
-import "../profile/style.css";
-import "../Home/feed/feedStyle.css";
 import { EditProfile } from "../../component/editProfile/EditProfile";
 import { usePost } from "../../contexts/postContext";
 import { Posts } from "../../component/posts/Posts";
 import { Loader } from "../../component/loader/Loader";
 import { useAuth } from "../../contexts/authContext";
-import { FaArrowLeft } from "react-icons/fa";
-import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Footer } from "../../component/footer/Footer";
 import { Followers } from "../../component/followes/Followes";
 import { Following } from "../../component/following/Following";
@@ -32,12 +34,19 @@ export const Profile = () => {
 
   const followerData = state?.followerData;
 
+  // getting login user followers
+
   const followers = followerData.filter(
     (follow) => follow.reciverId.toString() === _id.toString()
   );
+
+  // getting users follows by login user
+
   const followByThisUser = followerData.filter(
     (follow) => follow.senderId.toString() === _id.toString()
   );
+
+  //getting login user posts
 
   const filterUserPost = posts.filter((post) => post.userId._id === _id);
 

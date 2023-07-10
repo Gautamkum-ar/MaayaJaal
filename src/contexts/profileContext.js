@@ -6,15 +6,16 @@ import {
   useReducer,
   useState,
 } from "react";
-import { proReducer } from "../reducers/profilereducer/proReducer";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import baseUrl from "../utils/baseUrl";
-import { toast } from "react-toastify";
+import { proReducer } from "../reducers/profilereducer/proReducer";
 
 const ProfileContext = createContext();
 
 const initialState = {
+  searchData:[],
   profileData: {},
   allusers: [],
   singleUserData: {},
@@ -25,8 +26,6 @@ export const ProfileContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(proReducer, initialState);
 
   const [isProfileLoading, setIsProfileLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   const getProfileData = async () => {
     setIsProfileLoading(true);
@@ -138,7 +137,6 @@ export const ProfileContextProvider = ({ children }) => {
         state,
         dispatch,
         editProfileHandler,
-
         isProfileLoading,
         followingHandler,
       }}

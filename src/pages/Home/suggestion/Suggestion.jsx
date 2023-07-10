@@ -13,18 +13,18 @@ export const Suggestion = () => {
   );
 
   const navigate = useNavigate();
+  
   return (
     <div className="suggestion__container">
       <div className="filters">
         <FilterBox />
       </div>
+      <h2>Suggestion for you</h2>
       <div className="suggestions">
-        <h2>Suggestion for you</h2>
         {filterSuggestUser.map((user) => {
           const { _id, avatar, name } = user;
           return (
             <div key={_id} className="suggest__user">
-              <p className="user__name">{name}</p>
               <img
                 src={avatar}
                 alt={name}
@@ -33,7 +33,7 @@ export const Suggestion = () => {
                   dispatch({ type: "FIND_SINGLE_PROFILE", payload: user });
                 }}
               />
-              {/* <button onClick={() => followingHandler(_id)}>+Follow</button> */}
+              <p className="user__name">{name}</p>
             </div>
           );
         })}

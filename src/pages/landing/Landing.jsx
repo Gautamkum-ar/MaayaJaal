@@ -1,5 +1,5 @@
-import { useState } from "react";
 import "../landing/style.css";
+
 import { Login } from "../login/Login";
 import { SingUp } from "../signup/SignUp";
 import { useAuth } from "../../contexts/authContext";

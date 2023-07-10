@@ -21,12 +21,9 @@ export const BookMarkProvider = ({ children }) => {
       if (response.status === 200) {
         setBookmarkData(response.data.data);
         toast.success(response.data.message);
-        console.log(response.data.data, response.data.message);
       }
     } catch (error) {
-      // if (error.response.status === 409) {
-      //   toast.warning(error.response.data.message);
-      // }
+     console.log(error)
     }
   };
 

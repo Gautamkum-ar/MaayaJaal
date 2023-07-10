@@ -50,6 +50,12 @@
 .input__field{
     width: 83%;
 }
+.input__field img{
+    width: 5rem;
+    height: 5rem;
+}
+
+
 textarea{
     padding: 0.5rem;
     resize: none;
@@ -80,7 +86,7 @@ textarea{
     width:7rem;
     height: 2rem;
     align-self: center;
-    border: 1px solid var(---btn-color);
+    border: 1px solid #999;
     background: transparent;
     color: var(---font-color);
     font-size: 1rem;
@@ -238,7 +244,8 @@ justify-content: center;
       display: none;
     }
     .create__post__container{
-        display: none;
+        width: 90%;
+        min-height: 3rem;
     }
     .post__main{
         width: 90%;

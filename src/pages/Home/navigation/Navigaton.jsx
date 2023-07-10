@@ -1,6 +1,8 @@
 import { FaBookmark, FaHeart, FaHome, FaWpexplorer } from "react-icons/fa";
-import "../navigation/navStyle.css";
 import { Link } from "react-router-dom";
+
+import "../navigation/navStyle.css";
+
 import { useBookMark } from "../../../contexts/bookmarkContext";
 
 export const Navigation = () => {
@@ -20,11 +22,6 @@ export const Navigation = () => {
         </Link>
         <Link className="navigations" to="/bookmark">
           <FaBookmark onClick={() => getBookMark()} /> BookMarks
-        </Link>
-        <Link className="navigations">
-          {" "}
-          <FaHeart />
-          Liked Posts
         </Link>
       </div>
     </div>

@@ -179,3 +179,13 @@ input[type='file']{
     border-radius: 5px ;
     cursor: pointer;
 }
+
+
+@media only screen and (max-width:600px){
+
+  .edit__profile__main{
+    width: 90%;
+    height: auto;
+  }
+
+}

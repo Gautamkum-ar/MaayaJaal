@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "../avatar/Avatar.css";
 
 export const Avatar = ({

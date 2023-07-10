@@ -6,9 +6,10 @@ import {
   useReducer,
   useState,
 } from "react";
+import { toast } from "react-toastify";
+
 import baseUrl from "../utils/baseUrl";
 import { postReducer } from "../reducers/postReduce/postReducer";
-import { toast } from "react-toastify";
 
 const PostContext = createContext();
 
@@ -29,10 +30,6 @@ export const PostContextProvider = ({ children }) => {
     imageUrl: "",
   });
 
-  const [editPostData, setEditPostData] = useState({
-    caption: "",
-  });
-
   // get all post
 
   const getAllPosthandler = async () => {
@@ -41,7 +38,6 @@ export const PostContextProvider = ({ children }) => {
       const response = await axios.get(`${baseUrl}/getallpost`);
 
       dispatch({ type: "GET_POST", payload: response.data.data });
-      console.log(response, "post");
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -68,6 +64,7 @@ export const PostContextProvider = ({ children }) => {
 
       console.log(response);
       if (response.status === 200) {
+        toast.success("Post Created successfully");
         dispatch({ type: "CREATE__POST", payload: response.data.post });
       }
     } catch (error) {
@@ -78,8 +75,10 @@ export const PostContextProvider = ({ children }) => {
     }
   };
 
-  const editPosthandler = async (id) => {
-    const caption = editPostData.caption;
+  const editPosthandler = async (data) => {
+    const id = data._id;
+    const caption = data.caption;
+    const photoUrl = data.photoUrl;
     setIsLoading(true);
 
     try {
@@ -87,6 +86,7 @@ export const PostContextProvider = ({ children }) => {
         `${baseUrl}/editpost/${id}`,
         {
           caption: caption,
+          image: photoUrl,
         },
         {
           headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
@@ -94,8 +94,8 @@ export const PostContextProvider = ({ children }) => {
       );
 
       setIsLoading(false);
-      getAllPosthandler();
-      console.log(response.data.data);
+      toast.success("Post updated successfully");
+      dispatch({ type: "UPDATE__POST", payload: response.data.data });
     } catch (error) {
       console.log(error);
       setIsLoading(false);
@@ -110,6 +110,7 @@ export const PostContextProvider = ({ children }) => {
         headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
       });
 
+      toast.success("Post deleted successfully");
       dispatch({ type: "DELETE_POST", payload: response.data.data });
       setIsLoading(false);
     } catch (error) {
@@ -145,13 +146,14 @@ export const PostContextProvider = ({ children }) => {
   const getCommentHandler = async () => {
     try {
       const response = await axios.get(`${baseUrl}/getcomment`);
-      if(response.status===200){
-        dispatch({type:"GET_COMMENT",payload:response.data.data})
+      if (response.status === 200) {
+        dispatch({ type: "GET_COMMENT", payload: response.data.data });
       }
     } catch (error) {
       console.log(error);
     }
   };
+
   const commentHandler = async (id, commentInput) => {
     try {
       const response = await axios.post(
@@ -163,6 +165,7 @@ export const PostContextProvider = ({ children }) => {
           headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
         }
       );
+      toast.success("Comment posted successfully");
       dispatch({ type: "POST_COMMENT", payload: response.data.data });
     } catch (error) {
       console.log(error);
@@ -175,6 +178,7 @@ export const PostContextProvider = ({ children }) => {
         headers: { authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       if (response.status === 200) {
+        toast.success("Comment deleted successfully");
         dispatch({ type: "DELETE_COMMENT", payload: response.data.data });
       } else {
         toast.warning(response.data.message);
@@ -197,8 +201,7 @@ export const PostContextProvider = ({ children }) => {
         setCreatePost,
         createPost,
         state,
-        setEditPostData,
-        editPostData,
+
         editPosthandler,
         setToggleEditPost,
         toggleEditPost,

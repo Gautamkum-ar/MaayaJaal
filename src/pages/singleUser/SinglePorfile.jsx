@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+
 import { NavBar } from "../../component/nvabar/NavBar";
 import { Posts } from "../../component/posts/Posts";
 import { useAuth } from "../../contexts/authContext";
@@ -7,9 +10,7 @@ import { useProfile } from "../../contexts/profileContext";
 import { Navigation } from "../Home/navigation/Navigaton";
 import { Suggestion } from "../Home/suggestion/Suggestion";
 import "../singleUser/style.css";
-import { Link, useNavigate } from "react-router-dom";
 import { Footer } from "../../component/footer/Footer";
-import { useState } from "react";
 import { Followers } from "../../component/followes/Followes";
 import { Following } from "../../component/following/Following";
 
@@ -17,7 +18,9 @@ export const SingleProfile = () => {
   const [togglePost, setTogglePost] = useState(true);
   const [toggleFollowers, setToggleFollowers] = useState(false);
   const [toggleFollowing, setFollowing] = useState(false);
+
   const navigate = useNavigate();
+
   const { state, followingHandler } = useProfile();
   const { posts } = usePost();
   const { userData } = useAuth();
@@ -27,20 +30,28 @@ export const SingleProfile = () => {
 
   const followerData = state?.followerData;
 
+  //checking if login user  following  users
+
   const following = followerData.filter(
     (follow) =>
       follow.senderId.toString() === userData._id.toString() &&
       follow.reciverId.toString() === _id.toString()
   );
 
+  //getting followers data
+
   const followers = followerData.filter(
     (follow) => follow.reciverId.toString() === _id.toString()
   );
+
+  //getting users followby single user
+
   const followByThisUser = followerData.filter(
     (follow) => follow.senderId.toString() === _id.toString()
   );
 
-  console.log(followerData);
+  // get single user post
+
   const singleUserPost = posts.filter(
     (post) => post.userId._id.toString() === _id
   );

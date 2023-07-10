@@ -15,6 +15,7 @@ export const EditProfile = ({ setEditBtn }) => {
     ...state.profileData,
   });
 
+  //converting image file to base64
   const handleAvatar1 = (e) => {
     const file = e.target.files[0];
 

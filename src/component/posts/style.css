@@ -14,9 +14,8 @@
 }
 .edit__post__main{
     background: var(---background);
-    width: 40%;
+    width: 50%;
 position: relative;
-    height: 50%;
 }
 .__heading{
     display: flex;
@@ -32,13 +31,17 @@ top: 0.5rem;
 right: 0.5rem;
 height: 2rem;
 width: 2rem;
-background: none;
+background: rgba(0,0,0,0.5);
 border: none;
 font-size: 1.3rem;
 color: red;
 cursor: pointer;
+border-radius: 50%;
 }
 
+.edit__post__main .edit__post_top  .input__field textarea{
+    height: 10rem;
+}
 
 .comment a{
     display: flex;
@@ -80,3 +83,62 @@ cursor: pointer;
     width: 100%;
     color: #9999;
 }
+.create__post__bottom  label{
+    color: #888;
+    font-size: 1.7rem;
+    cursor: pointer;
+
+}
+
+.emoji{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #888;
+}
+
+.create_post__media{
+    display: flex;
+    position: relative;
+    height: 6rem;
+    height: 6rem;
+
+}
+.edit_post__media{
+    display: flex;
+    position: relative;
+    margin-left: 2rem;
+
+}
+.edit_post__media img{
+    height: auto;
+    width: 7rem;
+}
+.remove__media{
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    top: -1rem;
+    left: -1rem;
+    background: #000;
+    border: none;
+    height: 1.5rem;
+    cursor: pointer;
+    width: 1.5rem;
+    border-radius: 50%;
+    color: red;
+}
+
+@media only screen and (max-width:600px){
+
+   .edit__post__main{
+    width: 90%;
+   }
+    .user__profile{
+        width: 65%;
+        justify-self: flex-end;
+        margin-right: 1rem;
+    }
+  }

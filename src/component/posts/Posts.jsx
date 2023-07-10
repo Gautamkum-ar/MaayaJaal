@@ -2,7 +2,6 @@ import { FaBookmark, FaCommentDots, FaThumbsUp } from "react-icons/fa";
 
 import { usePost } from "../../contexts/postContext";
 import { EditPost } from "./EditPost";
-import { Comments } from "../comments/Comment";
 import { Loader } from "../loader/Loader";
 import { useAuth } from "../../contexts/authContext";
 import { useBookMark } from "../../contexts/bookmarkContext";

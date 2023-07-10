@@ -1,12 +1,14 @@
-import { Link } from "react-router-dom";
 
-import { FaEnvelope, FaLock, FaMobile, FaUser } from "react-icons/fa";
+import { FaEnvelope, FaLock,  FaUser } from "react-icons/fa";
 
 import "../signup/style.css";
+
 import { useAuth } from "../../contexts/authContext";
 
 export const SingUp = () => {
+
   const { signupHandler, setSignupData, signupData } = useAuth();
+  
   return (
     <div className="signup__container">
       <form action="" onSubmit={(e) => e.preventDefault()}>
@@ -80,9 +82,7 @@ export const SingUp = () => {
         <button className="create__btn" onClick={() => signupHandler()}>
           Create Account
         </button>
-        {/* <p>
-          Already Have Account <Link to="/login">Login</Link>
-        </p> */}
+        
       </form>
     </div>
   );

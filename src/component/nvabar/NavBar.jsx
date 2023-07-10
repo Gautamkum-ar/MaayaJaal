@@ -4,23 +4,13 @@ import { useProfile } from "../../contexts/profileContext";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../../contexts/authContext";
+import { SearchInput } from "../searchoutput/SearchInput";
 
 export const NavBar = () => {
-  const { state, setState } = useAuth();
+  const { userData, logOutHnadler } = useAuth();
   const { getProfileData } = useProfile();
 
   const navigate = useNavigate();
-  const logOutHnadler = () => {
-    setState({
-      ...state,
-      authenticated: false,
-      loading: false,
-      userData: null,
-    });
-    localStorage.removeItem("token");
-    localStorage.removeItem("avatar");
-    navigate("/");
-  };
 
   return (
     <nav className="navbar">
@@ -30,12 +20,15 @@ export const NavBar = () => {
           Maaya <span>Jaal</span>
         </p>
       </Link>
-      <p className="search">
-        <input type="text" placeholder="Search User" />
-      </p>
+
+
+<div className="search">
+<SearchInput />
+
+</div>
       <div className="user__profile">
         <img
-          src={state.userData.avatar}
+          src={userData.avatar}
           alt="user"
           onClick={() => {
             getProfileData();

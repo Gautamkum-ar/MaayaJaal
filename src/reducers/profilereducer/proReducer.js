@@ -3,7 +3,8 @@ export const proReducer = (state, { type, payload }) => {
     case "GET_PROFILE": {
       return {
         ...state,
-        profileData: payload.user,followerData:payload.follower
+        profileData: payload.user,
+        followerData: payload.follower,
       };
     }
 
@@ -11,6 +12,12 @@ export const proReducer = (state, { type, payload }) => {
       return {
         ...state,
         allusers: payload,
+      };
+    }
+    case "SEARCH__INPUT": {
+      return {
+        ...state,
+        searchData: payload!=='' && payload.trim() !=='' && state.allusers.filter((user)=>user.name.toLowerCase().includes(payload.toLowerCase().trim())),
       };
     }
     case "UPDATE_PROFILE": {

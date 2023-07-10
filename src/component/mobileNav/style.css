@@ -18,18 +18,18 @@
 
 }
 
-/* .newpost{
+.search__Mobile{
     display: flex;
-    width: 100%;
-    height: 80vh;
+    width: 90%;
     justify-content: center;
     align-items: center;
     position: fixed;
+    margin: auto;
     top: 4rem;
     right: 0;
     left: 0;
     background: var(---background);
-} */
+}
 
 
 
@@ -51,6 +51,20 @@
         color: var(---font-color);
         font-size: 1.5rem;
 
+    }
+    .user__profile__mobile{
+        display: flex;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        justify-content: center;
+    }
+
+    .user__profile__mobile img{
+        display: flex;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
     }
 
   

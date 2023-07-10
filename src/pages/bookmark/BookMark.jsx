@@ -1,21 +1,22 @@
-import { FaBookmark, FaThumbsUp } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
+import "../bookmark/style.css";
+
 import { Posts } from "../../component/posts/Posts";
 import { useAuth } from "../../contexts/authContext";
 import { useBookMark } from "../../contexts/bookmarkContext";
 import { usePost } from "../../contexts/postContext";
-import { Comments } from "../../component/comments/Comment";
 import { NavBar } from "../../component/nvabar/NavBar";
-
-import "../bookmark/style.css";
 import { Navigation } from "../Home/navigation/Navigaton";
 import { Suggestion } from "../Home/suggestion/Suggestion";
-import { Link } from "react-router-dom";
 
 export const BookMarks = () => {
   const { state } = usePost();
   const { userData } = useAuth();
   const { bookmarkData } = useBookMark();
 
+  // getting bookmark post data
+  
   const filterData = state?.postData.filter((post) =>
     bookmarkData.find(
       (book) =>
@@ -24,8 +25,6 @@ export const BookMarks = () => {
     )
   );
 
-  //   const bookmarkPost =filterData.filter((post)=>)
-  console.log(filterData);
   return (
     <div className="bookmark__container">
       <NavBar />

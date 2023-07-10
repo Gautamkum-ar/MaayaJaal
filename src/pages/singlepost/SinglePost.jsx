@@ -15,10 +15,11 @@ export const SinglePost = () => {
 
   const { state } = usePost();
 
+  //getting single post
+
   const filterPost = state?.postData?.filter(
     (post) => post._id.toString() === postId.toString()
   );
-  console.log(state.postData);
 
   return (
     <div className="single__post">

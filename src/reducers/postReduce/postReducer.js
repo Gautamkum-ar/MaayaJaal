@@ -14,6 +14,17 @@ export const postReducer = (state, { type, payload }) => {
         editpost: state.postData.find((post) => post._id === payload),
       };
     }
+
+    case "UPDATE__POST": {
+      return {
+        ...state,
+        postData: state.postData.map((post) =>
+          post._id === payload._id
+            ? { ...post, caption: payload.caption, photoUrl: payload.photoUrl }
+            : post
+        ),
+      };
+    }
     case "CREATE__POST": {
       return {
         ...state,
