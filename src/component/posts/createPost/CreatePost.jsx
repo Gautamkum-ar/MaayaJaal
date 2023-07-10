@@ -59,9 +59,9 @@ export const CreatePost = () => {
               <img src={createPost.imageUrl} alt="createpost" />
             </div>
           )}
-          <p>
+          {/* <p>
             <Emoji unified="" size="25" />
-          </p>
+          </p> */}
         </div>
       </section>
       <section className="create__post__bottom">
@@ -78,7 +78,7 @@ export const CreatePost = () => {
           />
         </label>
 
-        <p className="emoji">
+        {/* <p className="emoji">
           <BsEmojiSmile onClick={(e) => setToggleEmojis(!toggleEmojis)} />{" "}
           {toggleEmojis && (
             <div className="emoji__picker">
@@ -86,7 +86,7 @@ export const CreatePost = () => {
               <EmojiPicker />
             </div>
           )}{" "}
-        </p>
+        </p> */}
         <button
           className="create__new_post"
           onClick={() => {

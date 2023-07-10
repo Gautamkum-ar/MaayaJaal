@@ -8,10 +8,12 @@ import { useAuth } from "../../contexts/authContext";
 
 export const MobileNav = () => {
   const [toggleCreateButton, setToggleCeateButton] = useState(false);
-  const { getProfileData } = useProfile();
+  const { getProfileData,state } = useProfile();
   const { userData } = useAuth();
 
   const navigate = useNavigate();
+
+  const data=state.profileData?state.profileData:userData
   return (
     <div className="mobile__nav">
       {toggleCreateButton && (
@@ -40,7 +42,7 @@ export const MobileNav = () => {
       </Link>
       <div className="user__profile__mobile">
         <img
-          src={userData?.avatar}
+          src={data?.avatar}
           alt="user"
           onClick={() => {
             getProfileData();

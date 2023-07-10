@@ -30,10 +30,13 @@ export const Profile = () => {
   const { posts } = usePost();
   const { userData } = useAuth();
 
-  const { avatar, name, bio, cover, userName, _id, portfolio } = userData;
+  const data = state.profileData ? state.profileData : userData;
+  const { avatar, name, bio, cover, userName, _id, portfolio } = data;
 
   const followerData = state?.followerData;
 
+
+  // console.log(userData);
   // getting login user followers
 
   const followers = followerData.filter(

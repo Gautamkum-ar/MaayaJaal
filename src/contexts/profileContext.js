@@ -80,7 +80,7 @@ export const ProfileContextProvider = ({ children }) => {
         dispatch({ type: "UPDATE_PROFILE", payload: response.data.data });
         toast.success("Porfile Updated successfully");
       }
-
+      getAllUsers();
       setIsProfileLoading(false);
     } catch (e) {
       setIsProfileLoading(false);

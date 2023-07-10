@@ -8,7 +8,7 @@ import { SearchInput } from "../searchoutput/SearchInput";
 
 export const NavBar = () => {
   const { userData, logOutHnadler } = useAuth();
-  const { getProfileData } = useProfile();
+  const { getProfileData, state } = useProfile();
 
   const navigate = useNavigate();
 
@@ -21,14 +21,12 @@ export const NavBar = () => {
         </p>
       </Link>
 
-
-<div className="search">
-<SearchInput />
-
-</div>
+      <div className="search">
+        <SearchInput />
+      </div>
       <div className="user__profile">
         <img
-          src={userData.avatar}
+          src={userData?.avatar}
           alt="user"
           onClick={() => {
             getProfileData();

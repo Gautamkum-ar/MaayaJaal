@@ -71,9 +71,10 @@ textarea{
 .create__post__bottom{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100%;
     height: 4rem;
+    padding: 1rem;
 }
 .create__post__bottom input{
     color: #949090;
