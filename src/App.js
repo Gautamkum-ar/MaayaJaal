@@ -15,8 +15,26 @@ import { BookMarks } from "./pages/bookmark/BookMark";
 import { MobileNav } from "./component/mobileNav/MobileNav";
 import { SinglePost } from "./pages/singlepost/SinglePost";
 
+import ReactGA from "react-ga";
+import { useEffect } from "react";
+
+const GOOGLE_ANALYTIC_KEY = "G-57N32WKWCK";
+ReactGA.initialize(GOOGLE_ANALYTIC_KEY);
 function App() {
   const { loading } = useAuth();
+
+  if (window.performance) {
+    const timeSincePageLoad = Math.round(performance.now());
+    ReactGA.timing({
+      category: "JS Libraries",
+      variable: "load",
+      value: timeSincePageLoad, // in milliseconds
+      label: "CDN libs",
+    });
+  }
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
   return (
     <div className="App">
       <ToastContainer />

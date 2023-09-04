@@ -1,13 +1,16 @@
 import { useNavigate, useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa";
+
+import "../singlepost/style.css";
+
 import { Posts } from "../../component/posts/Posts";
 import { usePost } from "../../contexts/postContext";
 import { Comments } from "../../component/comments/Comment";
 import { NavBar } from "../../component/nvabar/NavBar";
 import { Navigation } from "../Home/navigation/Navigaton";
 import { Suggestion } from "../Home/suggestion/Suggestion";
-import "../singlepost/style.css";
 import { Footer } from "../../component/footer/Footer";
-import { FaArrowLeft } from "react-icons/fa";
+
 
 export const SinglePost = () => {
   const navigate = useNavigate();
