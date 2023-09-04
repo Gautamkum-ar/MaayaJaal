@@ -23,15 +23,15 @@ ReactGA.initialize(GOOGLE_ANALYTIC_KEY);
 function App() {
   const { loading } = useAuth();
 
-  if (window.performance) {
-    const timeSincePageLoad = Math.round(performance.now());
-    ReactGA.timing({
-      category: "JS Libraries",
-      variable: "load",
-      value: timeSincePageLoad, // in milliseconds
-      label: "CDN libs",
-    });
-  }
+  // if (window.performance) {
+  //   const timeSincePageLoad = Math.round(performance.now());
+  //   ReactGA.timing({
+  //     category: "JS Libraries",
+  //     variable: "load",
+  //     value: timeSincePageLoad, // in milliseconds
+  //     label: "CDN libs",
+  //   });
+  // }
   useEffect(() => {
     ReactGA.send({
       hitType: "pageview",
